@@ -1,10 +1,10 @@
 library blackboard.rest.announcements.availability;
 
-import 'duration.dart';
+import 'announcement_duration.dart';
 
 /// The [Availability] class...
 class Availability {
-  final Duration duration;
+  final AnnouncementDuration duration;
 
   /// The [Availability] constructor...
   Availability (this.duration);
