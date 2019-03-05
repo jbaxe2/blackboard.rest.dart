@@ -1,8 +1,7 @@
-import 'package:blackboard/blackboard_rest.dart';
+@TestOn('vm')
+library blackboard.rest.tests;
+
 import 'package:test/test.dart';
 
-void main() {
-  test('calculate', () {
-    expect(calculate(), 42);
-  });
-}
+/// The [main] function...
+void main() {}

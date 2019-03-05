@@ -1,4 +1,3 @@
-A sample command-line application.
+**blackboard.rest**
 
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+A library for Blackboard's REST API, written in Dart.

@@ -1,3 +1,4 @@
-int calculate() {
-  return 6 * 7;
-}
+library blackboard.rest;
+
+export 'announcements.dart';
+export 'oauth.dart';
