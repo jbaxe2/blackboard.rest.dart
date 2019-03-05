@@ -1,5 +1,8 @@
 **blackboard.rest**
 
+## 0.0.9
+- Start of adding course memberships.
+
 ## 0.0.8
 - Adding interfaces, value object types, and configurations for various REST
 endpoint categories.
