@@ -27,8 +27,8 @@ class _RestUserAuthorizer extends _RestAuthorizer implements RestUserAuthorizer 
   Future<AccessToken> requestUserAuthorization (
     String authCode, String redirectUri
   ) async {
-    AccessToken token;
+    AccessToken accessToken;
 
-    return token;
+    return accessToken;
   }
 }

@@ -24,7 +24,9 @@ class _RestAuthorizer implements RestAuthorizer {
 
   /// The [requestAuthorization] method...
   @override
-  Future<AccessToken> requestAuthorization() {
-    ;
+  Future<AccessToken> requestAuthorization() async {
+    AccessToken accessToken;
+
+    return accessToken;
   }
 }
