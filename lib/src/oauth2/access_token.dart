@@ -1,4 +1,4 @@
-library blackboard.rest.oauth.access_token;
+library blackboard.rest.oauth2.access_token;
 
 /// The [AccessToken] class...
 class AccessToken {

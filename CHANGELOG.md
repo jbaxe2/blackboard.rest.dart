@@ -1,5 +1,9 @@
 **blackboard.rest**
 
+## 0.1.0
+- Start of implementing some authorization and request connection code.
+- Minor refactoring.
+
 ## 0.0.9
 - Start of adding course memberships.
 

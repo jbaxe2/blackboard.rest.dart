@@ -1,8 +1,8 @@
-library blackboard.rest.oauth;
+library blackboard.rest.oauth2;
 
 import 'dart:async' show Future;
 
-import 'src/oauth/access_token.dart';
+import 'src/oauth2/access_token.dart';
 
 /// The [BlackboardRestOAuth2] abstract class...
 abstract class BlackboardRestOAuth2 {
