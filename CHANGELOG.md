@@ -1,5 +1,8 @@
 **blackboard.rest**
 
+## 0.1.1
+- Work towards REST authorization.
+
 ## 0.1.0
 - Start of implementing some authorization and request connection code.
 - Minor refactoring.

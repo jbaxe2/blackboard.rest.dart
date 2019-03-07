@@ -14,7 +14,8 @@ abstract class RestUserAuthorizer extends RestAuthorizer {
 /// The [_RestUserAuthorizer] class...
 class _RestUserAuthorizer extends _RestAuthorizer implements RestUserAuthorizer {
   /// The [_RestUserAuthorizer] constructor...
-  _RestUserAuthorizer (String clientId, String secret) : super (clientId, secret);
+  _RestUserAuthorizer (Uri host, String clientId, String secret) :
+    super (host, clientId, secret);
 
   /// The [requestAuthorizationCode] method...
   @override
