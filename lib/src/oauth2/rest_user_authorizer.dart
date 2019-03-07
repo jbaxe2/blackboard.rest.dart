@@ -20,7 +20,11 @@ class _RestUserAuthorizer extends _RestAuthorizer implements RestUserAuthorizer 
   /// The [requestAuthorizationCode] method...
   @override
   Future<void> requestAuthorizationCode (String redirectUri) async {
-    ;
+    String authorizeUriStr = '$host$base${oauth2['authorization_code']}'
+      '?redirect_uri=${Uri.encodeFull (redirectUri)}&client_id=$clientId'
+      '&response_type=code&scope=read';
+
+    window.location.replace (authorizeUriStr);
   }
 
   /// The [requestUserAuthorization] method...
@@ -28,8 +32,38 @@ class _RestUserAuthorizer extends _RestAuthorizer implements RestUserAuthorizer 
   Future<AccessToken> requestUserAuthorization (
     String authCode, String redirectUri
   ) async {
-    AccessToken accessToken;
+    String authCodeUriStr = '$host$base${oauth2['request_token']}'
+      '&code=$authCode&redirect_uri=${Uri.encodeFull (redirectUri)}';
 
-    return accessToken;
+    String encodedAuth = (new Base64Encoder()).convert (
+      '$clientId:$secret'.codeUnits
+    );
+
+    http.Response tokenResponse;
+
+    try {
+      tokenResponse = await http.post (
+        Uri.parse (authCodeUriStr),
+        headers: {
+          HttpHeaders.authorizationHeader: 'Basic $encodedAuth',
+          HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded'
+        },
+        body: 'grant_type=authorization_code'
+      );
+    } catch (e) {
+      throw new AuthorizationException (e.toString());
+    }
+
+    return _parseRawToken (json.decode (tokenResponse.body));
+  }
+
+  /// The [_parseRawToken] method...
+  @override
+  AccessToken _parseRawToken (Map<String, String> rawToken) {
+    return new AccessToken (
+      rawToken['access_token'], rawToken['token_type'],
+      int.parse (rawToken['expires_in']),
+      rawToken['refresh_token'], rawToken['scope'], rawToken['user_id']
+    );
   }
 }

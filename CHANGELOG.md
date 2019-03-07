@@ -1,5 +1,9 @@
 **blackboard.rest**
 
+## 0.1.2
+- More work towards REST authorization.
+- Start of creating course grades value objects and interfaces.
+
 ## 0.1.1
 - Work towards REST authorization.
 

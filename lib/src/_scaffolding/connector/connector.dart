@@ -79,9 +79,7 @@ class _BlackboardRestConnector implements BlackboardRestConnector {
   Future<http.Response> _handleGetRequest (
     Uri endpointUri, Map<String, String> httpHeaders, [Map<String, Object> data]
   ) async {
-    httpHeaders.addAll (
-      {HttpHeaders.contentTypeHeader: 'application/json'}
-    );
+    httpHeaders[HttpHeaders.contentTypeHeader] = 'application/json';
 
     if ((null != data) && data.isNotEmpty) {
       endpointUri.queryParameters.addAll (data);
@@ -94,9 +92,7 @@ class _BlackboardRestConnector implements BlackboardRestConnector {
   Future<http.Response> _handlePostRequest (
     Uri endpointUri, Map<String, String> httpHeaders, [Map<String, Object> data]
   ) async {
-    httpHeaders.addAll (
-      {HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded'}
-    );
+    httpHeaders[HttpHeaders.contentTypeHeader] = 'application/x-www-form-urlencoded';
 
     if (null == data) {
       data = {};

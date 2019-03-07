@@ -2,9 +2,13 @@ library blackboard.rest.oauth2.authorizer;
 
 import 'dart:async' show Future;
 import 'dart:convert' show Base64Encoder, json;
+import 'dart:html' show window;
 import 'dart:io' show HttpHeaders;
 
 import 'package:http/http.dart' as http;
+
+import '../_scaffolding/configuration/endpoints.dart';
+import '../_scaffolding/error/authorization_exception.dart';
 
 import 'access_token.dart';
 
@@ -35,14 +39,20 @@ class _RestAuthorizer implements RestAuthorizer {
       '$clientId:$secret'.codeUnits
     );
 
-    http.Response tokenResponse = await http.post (
-      host,
-      headers: {
-        HttpHeaders.authorizationHeader: 'Basic $authorizeStr',
-        HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded'
-      },
-      body: 'grant_type=client_credentials'
-    );
+    http.Response tokenResponse;
+
+    try {
+      tokenResponse = await http.post (
+        Uri.parse ('$host$base${oauth2['request_token']}'),
+        headers: {
+          HttpHeaders.authorizationHeader: 'Basic $authorizeStr',
+          HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded'
+        },
+        body: 'grant_type=client_credentials'
+      );
+    } catch (e) {
+      throw new AuthorizationException (e.toString());
+    }
 
     return _parseRawToken (json.decode (tokenResponse.body));
   }
