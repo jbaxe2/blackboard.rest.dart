@@ -1,5 +1,9 @@
 **blackboard.rest**
 
+## 0.1.3
+- More work towards course grades, course grade notations, roles.
+- Start of course groups, content, and uploads (value objects and interfaces).
+
 ## 0.1.2
 - More work towards REST authorization.
 - Start of creating course grades value objects and interfaces.
