@@ -1,5 +1,10 @@
 **blackboard.rest**
 
+## 0.1.3+1
+- Minor refactoring for return types in interfaces.
+- Updated the README.
+- Start of creating some implementation classes.
+
 ## 0.1.3
 - More work towards course grades, course grade notations, roles.
 - Start of course groups, content, and uploads (value objects and interfaces).

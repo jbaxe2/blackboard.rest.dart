@@ -10,7 +10,7 @@ abstract class CourseGradeNotations {
   Future<Iterable<GradeNotation>> getCourseGradeNotations (String courseId);
 
   /// The [createCourseGradeNotation] abstract method...
-  Future<bool> createCourseGradeNotation (
+  Future<void> createCourseGradeNotation (
     String courseId, GradeNotation gradeNotation
   );
 
@@ -20,7 +20,7 @@ abstract class CourseGradeNotations {
   );
 
   /// The [updateCourseGradeNotation] abstract method...
-  Future<bool> updateCourseGradeNotation (
+  Future<void> updateCourseGradeNotation (
     String courseId, String gradeNotationId, GradeNotation gradeNotation
   );
 }

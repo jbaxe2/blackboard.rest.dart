@@ -10,13 +10,13 @@ abstract class Announcements {
   Future<Iterable<Announcement>> getAnnouncements();
 
   /// The [createAnnouncement] abstract method...
-  Future<bool> createAnnouncement (Announcement announcement);
+  Future<void> createAnnouncement (Announcement announcement);
 
   /// The [getAnnouncement] abstract method...
   Future<Announcement> getAnnouncement (String announcementId);
 
   /// The [updateAnnouncement] abstract method...
-  Future<bool> updateAnnouncement (
+  Future<void> updateAnnouncement (
     String announcementId, Announcement announcement
   );
 }

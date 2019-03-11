@@ -12,13 +12,13 @@ abstract class CourseGrades {
   Future<Iterable<GradeColumn>> getGradeColumns (String courseId);
 
   /// The [createGradeColumn] abstract method...
-  Future<bool> createGradeColumn (String courseId, GradeColumn gradeColumn);
+  Future<void> createGradeColumn (String courseId, GradeColumn gradeColumn);
 
   /// The [getGradeColumn] abstract method...
   Future<GradeColumn> getGradeColumn (String courseId, String columnId);
 
   /// The [updateGradeColumn] abstract method...
-  Future<bool> updateGradeColumn (
+  Future<void> updateGradeColumn (
     String courseId, String columnId, GradeColumn gradeColumn
   );
 
@@ -28,7 +28,7 @@ abstract class CourseGrades {
   );
 
   /// The [createColumnAttempt] method...
-  Future<bool> createColumnAttempt (String columnId, Attempt attempt);
+  Future<void> createColumnAttempt (String columnId, Attempt attempt);
 
   /// The [getColumnAttempt] method...
   Future<Attempt> getColumnAttempt (
@@ -36,7 +36,7 @@ abstract class CourseGrades {
   );
 
   /// The [updateColumnAttempt] method...
-  Future<bool> updateColumnAttempt (
+  Future<void> updateColumnAttempt (
     String columnId, String attemptId, Attempt attempt
   );
 
@@ -50,7 +50,7 @@ abstract class CourseGrades {
   Future<Grade> getColumnGrade (String courseId, String columnId, String userId);
 
   /// The [updateColumnGrade] method...
-  Future<bool> updateColumnGrade (
+  Future<void> updateColumnGrade (
     String courseId, String columnId, String userId, Grade grade
   );
 

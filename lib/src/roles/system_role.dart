@@ -1,20 +1,13 @@
 library blackboard.rest.roles.system;
 
+import 'role.dart';
+
 /// The [SystemRole] class...
-class SystemRole {
-  final String id;
-
-  final String roleId;
-
-  final String name;
-
-  final String description;
-
-  final bool custom;
-
+class SystemRole extends Role {
   /// The [SystemRole] constructor...
   SystemRole (
-    this.id, this.roleId, this.name, this.custom,
-    {this.description}
+    String id, String roleId, String name, String description, bool custom
+  ) : super (
+    id, roleId, name, custom, description: description
   );
 }

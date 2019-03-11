@@ -11,20 +11,20 @@ abstract class Contents {
   Future<Iterable<Content>> getContents (String courseId);
 
   /// The [createContent] abstract method...
-  Future<bool> createContent (String courseId, Content content);
+  Future<void> createContent (String courseId, Content content);
 
   /// The [createAssignment] abstract method...
-  Future<bool> createAssignment (String courseId, Assignment assignment);
+  Future<void> createAssignment (String courseId, Assignment assignment);
 
   /// The [getContent] abstract method...
   Future<Content> getContent (String courseId, String contentId);
 
   /// The [updateContent] abstract method...
-  Future<bool> updateContent (String courseId, String contentId, Content content);
+  Future<void> updateContent (String courseId, String contentId, Content content);
 
   /// The [getChildren] abstract method...
   Future<Iterable<Content>> getChildren (String courseId, String contentId);
 
   /// The [createChild] abstract method...
-  Future<bool> createChild (String courseId, String contentId, Content content);
+  Future<void> createChild (String courseId, String contentId, Content content);
 }

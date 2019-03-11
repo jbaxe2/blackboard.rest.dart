@@ -1,6 +1,7 @@
 library blackboard.rest.connector;
 
 import 'dart:async' show Future;
+import 'dart:convert' show json;
 import 'dart:io' show HttpHeaders;
 
 import 'package:http/http.dart' as http;
@@ -14,8 +15,8 @@ import '../error/rest_exception.dart';
 /// The [BlackboardRestConnector] abstract class...
 abstract class BlackboardRestConnector {
   /// The [sendBbRestRequest] abstract method...
-  Future<String> sendBbRestRequest (
-    String endpoint, [String method = 'get', Map<String, Object> data]
+  Future<dynamic> sendBbRestRequest (
+    String endpoint, {String method = 'get', Map<String, Object> data}
   );
 }
 
@@ -38,8 +39,8 @@ class _BlackboardRestConnector implements BlackboardRestConnector {
 
   /// The [sendBbRestRequest] abstract method...
   @override
-  Future<String> sendBbRestRequest (
-    String endpoint, [String method = 'get', Map<String, Object> data]
+  Future<dynamic> sendBbRestRequest (
+    String endpoint, {String method = 'get', Map<String, Object> data}
   ) async {
     if (endpoint.isEmpty) {
       throw new BlackboardRestException (
@@ -72,7 +73,7 @@ class _BlackboardRestConnector implements BlackboardRestConnector {
       throw new BlackboardRestException (e.toString());
     }
 
-    return response?.body;
+    return (null == response) ? {} : json.decode (response.body);
   }
 
   /// The [_handleGetRequest] method...

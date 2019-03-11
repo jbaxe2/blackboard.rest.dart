@@ -10,11 +10,11 @@ abstract class CourseGroups {
   Future<Iterable<Group>> getCourseGroups (String courseId);
 
   /// The [createGroup] abstract method...
-  Future<bool> createGroup (String courseId, Group group);
+  Future<void> createGroup (String courseId, Group group);
 
   /// The [getGroup] abstract method...
   Future<Group> getGroup (String courseId, String groupId);
 
   /// The [updateGroup] abstract method...
-  Future<bool> updateGroup (String courseId, String groupId, Group group);
+  Future<void> updateGroup (String courseId, String groupId, Group group);
 }

@@ -16,12 +16,12 @@ abstract class CourseMemberships {
   Future<Membership> getMembership (String courseId, String userId);
 
   /// The [updateMembership] abstract method...
-  Future<bool> updateMembership (
+  Future<void> updateMembership (
     String courseId, String userId, Membership membership
   );
 
   /// The [createMembership] abstract method...
-  Future<bool> createMembership (
+  Future<void> createMembership (
     String courseId, String userId, Membership membership
   );
 }

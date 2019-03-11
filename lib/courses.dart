@@ -12,13 +12,13 @@ abstract class Courses {
   Future<Iterable<Course>> getCourses();
 
   /// The [createCourse] abstract method...
-  Future<bool> createCourse (Course course);
+  Future<void> createCourse (Course course);
 
   /// The [getCourse] abstract method...
   Future<Course> getCourse (String courseId);
 
   /// The [updateCourse] abstract method...
-  Future<bool> updateCourse (String courseId, Course course);
+  Future<void> updateCourse (String courseId, Course course);
 
   /// The [getChildrenCourses] abstract method...
   Future<Iterable<CourseChild>> getChildrenCourses (String courseId);
@@ -27,12 +27,12 @@ abstract class Courses {
   Future<CourseChild> getChildCourse (String courseId, String childCourseId);
 
   /// The [addChildCourse] abstract method...
-  Future<bool> addChildCourse (
+  Future<void> addChildCourse (
     String courseId, String childCourseId, [bool ignoreEnrollmentErrors]
   );
 
   /// The [copyCourse] abstract method...
-  Future<bool> copyCourse (String courseId, String newCourseId);
+  Future<void> copyCourse (String courseId, String newCourseId);
 
   /// The [getCrossListSet] abstract method...
   Future<Iterable<CourseChild>> getCrossListSet (String courseId);

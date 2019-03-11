@@ -13,5 +13,5 @@ abstract class BlackboardRestOAuth2 {
   );
 
   /// The [requestToken] method...
-  Future<AccessToken> requestToken();
+  Future<AccessToken> requestToken (String grant_type, [String code]);
 }

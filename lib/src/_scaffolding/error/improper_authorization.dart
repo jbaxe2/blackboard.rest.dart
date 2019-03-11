@@ -1,11 +1,11 @@
-library blackboard.rest.exception.authorization;
+library blackboard.rest.error.authorization;
 
 import 'rest_exception.dart';
 
-/// The [AuthorizationException] class...
-class AuthorizationException extends BlackboardRestException {
-  /// The [AuthorizationException] constructor...
-  AuthorizationException (
+/// The [ImproperAuthorization] class...
+class ImproperAuthorization extends BlackboardRestException {
+  /// The [ImproperAuthorization] constructor...
+  ImproperAuthorization (
     String message,
     {String status, String code, String developerMessage, String extraInfo}
   ) : super (

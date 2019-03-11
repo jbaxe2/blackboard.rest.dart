@@ -10,11 +10,11 @@ abstract class Users {
   Future<Iterable<User>> getUsers();
 
   /// The [createUser] abstract method...
-  Future<bool> createUser (User user);
+  Future<void> createUser (User user);
 
   /// The [getUser] abstract method...
   Future<User> getUser (String userId);
 
   /// The [updateUser] abstract method...
-  Future<bool> updateUser (String userId, User user);
+  Future<void> updateUser (String userId, User user);
 }

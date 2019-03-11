@@ -15,7 +15,7 @@ abstract class CourseGroupUsers {
   );
 
   /// The [createGroupMembership] abstract method...
-  Future<bool> createGroupMembership (
+  Future<void> createGroupMembership (
     String courseId, String groupId, String userId
   );
 }

@@ -2,13 +2,13 @@ library blackboard.rest.oauth2.authorizer;
 
 import 'dart:async' show Future;
 import 'dart:convert' show Base64Encoder, json;
-import 'dart:html' show window;
-import 'dart:io' show HttpHeaders;
+import 'dart:html' deferred as html show window;
+import 'dart:io' deferred as io show HttpHeaders;
 
 import 'package:http/http.dart' as http;
 
 import '../_scaffolding/configuration/endpoints.dart';
-import '../_scaffolding/error/authorization_exception.dart';
+import '../_scaffolding/error/improper_authorization.dart';
 
 import 'access_token.dart';
 
@@ -35,6 +35,8 @@ class _RestAuthorizer implements RestAuthorizer {
   /// The [requestAuthorization] method...
   @override
   Future<AccessToken> requestAuthorization() async {
+    await io.loadLibrary();
+
     String authorizeStr = (new Base64Encoder()).convert (
       '$clientId:$secret'.codeUnits
     );
@@ -45,13 +47,13 @@ class _RestAuthorizer implements RestAuthorizer {
       tokenResponse = await http.post (
         Uri.parse ('$host$base${oauth2['request_token']}'),
         headers: {
-          HttpHeaders.authorizationHeader: 'Basic $authorizeStr',
-          HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded'
+          io.HttpHeaders.authorizationHeader: 'Basic $authorizeStr',
+          io.HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded'
         },
         body: 'grant_type=client_credentials'
       );
     } catch (e) {
-      throw new AuthorizationException (e.toString());
+      throw new ImproperAuthorization (e.toString());
     }
 
     return _parseRawToken (json.decode (tokenResponse.body));
