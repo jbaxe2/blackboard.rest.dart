@@ -14,3 +14,6 @@ doc/api/
 # Project files for IntelliJ
 .idea
 *.iml
+
+# Ignore sensitive information
+test/oauth2/oauth2_connection_info.dart
