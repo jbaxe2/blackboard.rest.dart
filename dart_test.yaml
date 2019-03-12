@@ -1,0 +1,13 @@
+# blackboard.rest tests configuration
+
+platforms: [vm]
+#test_on: 'vm'
+
+paths:
+  - test/
+
+filename: 'blackboard_rest_test.dart'
+
+reporter: expanded
+
+timeout: 'none'

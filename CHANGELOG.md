@@ -1,5 +1,12 @@
 **blackboard.rest**
 
+## 0.1.4
+- Creation of factories for DTO's.
+  - Factories for the DTO's will (for now) only use the required params.
+  - Optional parameters for DTO's will appear later.
+- More work on implementation classes.
+- Start of creating tests.
+
 ## 0.1.3+1
 - Minor refactoring for return types in interfaces.
 - Updated the README.

@@ -8,8 +8,13 @@ the documentation to follow is found here:
 https://developer.blackboard.com/portal/displayApi/Learn?version=3400.1.0
 
 Currently the Blackboard Learn version supported is version 3400.1.0 (Q2 2018, CU1).
+
 Also, in terms of the CRUD operations, there is no support for deletions.  This
 may or may not change in the future.
+
+Starting out, this implementation will only support core functionality of the
+Blackboard REST API.  The optional functionality (such as optional parameters
+for the DTO's and endpoints) will come later, once the library has matured.
 
 It will be helpful to have previous experience with the workflow of using
 Blackboard's REST API, but not particularly necessary.  The workflow is fairly

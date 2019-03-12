@@ -2,8 +2,7 @@ library blackboard.rest.oauth2.authorizer;
 
 import 'dart:async' show Future;
 import 'dart:convert' show Base64Encoder, json;
-import 'dart:html' deferred as html show window;
-import 'dart:io' deferred as io show HttpHeaders;
+import 'dart:io' show HttpHeaders;
 
 import 'package:http/http.dart' as http;
 
@@ -35,8 +34,6 @@ class _RestAuthorizer implements RestAuthorizer {
   /// The [requestAuthorization] method...
   @override
   Future<AccessToken> requestAuthorization() async {
-    await io.loadLibrary();
-
     String authorizeStr = (new Base64Encoder()).convert (
       '$clientId:$secret'.codeUnits
     );
@@ -47,8 +44,8 @@ class _RestAuthorizer implements RestAuthorizer {
       tokenResponse = await http.post (
         Uri.parse ('$host$base${oauth2['request_token']}'),
         headers: {
-          io.HttpHeaders.authorizationHeader: 'Basic $authorizeStr',
-          io.HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded'
+          HttpHeaders.authorizationHeader: 'Basic $authorizeStr',
+          HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded'
         },
         body: 'grant_type=client_credentials'
       );
@@ -56,14 +53,21 @@ class _RestAuthorizer implements RestAuthorizer {
       throw new ImproperAuthorization (e.toString());
     }
 
+    if (400 == tokenResponse.statusCode) {
+      throw new ImproperAuthorization ('Invalid access token request.');
+    } else if (401 == tokenResponse.statusCode) {
+      throw new ImproperAuthorization (
+        'Invalid client credentials, or no access granted to this Learn server.'
+      );
+    }
+
     return _parseRawToken (json.decode (tokenResponse.body));
   }
 
   /// The [_parseRawToken] method...
-  AccessToken _parseRawToken (Map<String, String> rawToken) {
+  AccessToken _parseRawToken (Map<String, dynamic> rawToken) {
     return new AccessToken (
-      rawToken['access_token'], rawToken['token_type'],
-      int.parse (rawToken['expires_in']),
+      rawToken['access_token'], rawToken['token_type'], rawToken['expires_in'],
       null, null, null
     );
   }

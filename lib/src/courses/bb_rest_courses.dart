@@ -4,7 +4,7 @@ import 'dart:async' show Future;
 
 import '../../courses.dart';
 
-import '../_scaffolding/configuration/endpoints.dart';
+import '../_scaffolding/configuration/endpoints.dart' show courses;
 import '../_scaffolding/connector/connector.dart';
 import '../_scaffolding/factory/course_factory.dart';
 

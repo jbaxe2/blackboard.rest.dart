@@ -20,13 +20,13 @@ class _RestUserAuthorizer extends _RestAuthorizer implements RestUserAuthorizer 
   /// The [requestAuthorizationCode] method...
   @override
   Future<void> requestAuthorizationCode (String redirectUri) async {
-    await html.loadLibrary();
+    //await html.loadLibrary();
 
     String authorizeUriStr = '$host$base${oauth2['authorization_code']}'
       '?redirect_uri=${Uri.encodeFull (redirectUri)}&client_id=$clientId'
       '&response_type=code&scope=read';
 
-    html.window.location.replace (authorizeUriStr);
+    //html.window.location.replace (authorizeUriStr);
   }
 
   /// The [requestUserAuthorization] method...
@@ -34,8 +34,6 @@ class _RestUserAuthorizer extends _RestAuthorizer implements RestUserAuthorizer 
   Future<AccessToken> requestUserAuthorization (
     String authCode, String redirectUri
   ) async {
-    await io.loadLibrary();
-
     String authCodeUriStr = '$host$base${oauth2['request_token']}'
       '&code=$authCode&redirect_uri=${Uri.encodeFull (redirectUri)}';
 
@@ -49,8 +47,8 @@ class _RestUserAuthorizer extends _RestAuthorizer implements RestUserAuthorizer 
       tokenResponse = await http.post (
         Uri.parse (authCodeUriStr),
         headers: {
-          io.HttpHeaders.authorizationHeader: 'Basic $encodedAuth',
-          io.HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded'
+          HttpHeaders.authorizationHeader: 'Basic $encodedAuth',
+          HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded'
         },
         body: 'grant_type=authorization_code'
       );
@@ -63,10 +61,9 @@ class _RestUserAuthorizer extends _RestAuthorizer implements RestUserAuthorizer 
 
   /// The [_parseRawToken] method...
   @override
-  AccessToken _parseRawToken (Map<String, String> rawToken) {
+  AccessToken _parseRawToken (Map<String, dynamic> rawToken) {
     return new AccessToken (
-      rawToken['access_token'], rawToken['token_type'],
-      int.parse (rawToken['expires_in']),
+      rawToken['access_token'], rawToken['token_type'], rawToken['expires_in'],
       rawToken['refresh_token'], rawToken['scope'], rawToken['user_id']
     );
   }
