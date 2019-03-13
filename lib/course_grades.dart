@@ -3,8 +3,19 @@ library blackboard.rest.grades;
 import 'dart:async' show Future;
 
 import 'src/course_grades/attempt.dart';
+import 'src/course_grades/bb_rest_course_grades.dart';
 import 'src/course_grades/grade.dart';
 import 'src/course_grades/grade_column.dart';
+
+import 'src/oauth2/access_token.dart';
+
+export 'src/course_grades/attempt.dart';
+export 'src/course_grades/grade.dart';
+export 'src/course_grades/grade_column.dart';
+
+/// The [getCourseGradesInstance] function...
+CourseGrades getCourseGradesInstance (String host, AccessToken token) =>
+  new BbRestCourseGrades (host, token);
 
 /// The [CourseGrades] abstract class...
 abstract class CourseGrades {
@@ -27,33 +38,33 @@ abstract class CourseGrades {
     String courseId, String columnId
   );
 
-  /// The [createColumnAttempt] method...
+  /// The [createColumnAttempt] abstract method...
   Future<void> createColumnAttempt (String columnId, Attempt attempt);
 
-  /// The [getColumnAttempt] method...
+  /// The [getColumnAttempt] abstract method...
   Future<Attempt> getColumnAttempt (
     String courseId, String columnId, String attemptId
   );
 
-  /// The [updateColumnAttempt] method...
+  /// The [updateColumnAttempt] abstract method...
   Future<void> updateColumnAttempt (
     String columnId, String attemptId, Attempt attempt
   );
 
-  /// The [getColumnGrades] method...
+  /// The [getColumnGrades] abstract method...
   Future<Iterable<Grade>> getColumnGrades (String courseId, String columnId);
 
-  /// The [getColumnGradeLastChanged] method...
+  /// The [getColumnGradeLastChanged] abstract method...
   Future<Grade> getColumnGradeLastChanged (String courseId, String columnId);
 
-  /// The [getColumnGrade] method...
+  /// The [getColumnGrade] abstract method...
   Future<Grade> getColumnGrade (String courseId, String columnId, String userId);
 
-  /// The [updateColumnGrade] method...
+  /// The [updateColumnGrade] abstract method...
   Future<void> updateColumnGrade (
     String courseId, String columnId, String userId, Grade grade
   );
 
-  /// The [getUserGrades] method...
+  /// The [getUserGrades] abstract method...
   Future<Iterable<Grade>> getUserGrades (String courseId, String userId);
 }

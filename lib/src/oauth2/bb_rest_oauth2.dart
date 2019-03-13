@@ -26,7 +26,7 @@ class BbRestOAuth2 implements BlackboardRestOAuth2 {
   /// The [getAuthorizationCode] abstract method...
   @override
   Future<void> getAuthorizationCode (
-    Uri redirect_uri, String response_type, String client_id, HttpResponse response,
+    Uri redirect_uri, String response_type, HttpResponse response,
     {String scope, String state}
   ) async {
     _createAuthorizer ('authorization_code');

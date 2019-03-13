@@ -6,6 +6,8 @@ import 'package:test/test.dart';
 import 'package:blackboard.rest/src/courses/bb_rest_courses.dart';
 import 'package:blackboard.rest/src/courses/course.dart';
 
+import 'package:blackboard.rest/courses.dart';
+
 import '../test_authorizer.dart';
 import '../testable.dart';
 
@@ -18,16 +20,26 @@ class CoursesTester extends TestAuthorizer implements Testable {
   @override
   void run() {
     group ('Courses:', () {
+      _testGetValidCoursesInstance();
       _testGetCourseByPrimaryId();
       _testGetCourseByCourseId();
       _testGetCourseByExternalId();
     });
   }
 
+  /// The [_testGetValidCoursesInstance] method...
+  void _testGetValidCoursesInstance() {
+    test ('Get a Courses instance.', () async {
+      Courses courses = getCoursesInstance (host, await authorizeForTests());
+
+      expect ((courses is BbRestCourses), true);
+    });
+  }
+
   /// The [_testGetCourseByPrimaryId] method...
   void _testGetCourseByPrimaryId() {
     test ('Get a course by its primary (internal) ID.', () async {
-      var bbRestCourses = new BbRestCourses (host, await authorizeForTests());
+      Courses bbRestCourses = getCoursesInstance (host, await authorizeForTests());
 
       Exception error;
       Course course;
@@ -48,7 +60,7 @@ class CoursesTester extends TestAuthorizer implements Testable {
   /// The [_testGetCourseByCourseId] method...
   void _testGetCourseByCourseId() {
     test ('Get a course by its course ID (as displayed in GUI).', () async {
-      var bbRestCourses = new BbRestCourses (host, await authorizeForTests());
+      Courses bbRestCourses = getCoursesInstance (host, await authorizeForTests());
 
       Exception error;
       Course course;
@@ -69,7 +81,7 @@ class CoursesTester extends TestAuthorizer implements Testable {
   /// The [_testGetCourseByExternalId] method...
   void _testGetCourseByExternalId() {
     test ('Get a course by its external ID.', () async {
-      var bbRestCourses = new BbRestCourses (host, await authorizeForTests());
+      Courses bbRestCourses = getCoursesInstance (host, await authorizeForTests());
 
       Exception error;
       Course course;

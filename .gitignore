@@ -16,4 +16,4 @@ doc/api/
 *.iml
 
 # Ignore sensitive information
-#src/_scaffoling/configuration/oauth2_connection_info.dart
+src/_scaffoling/configuration/oauth2_connection_info.dart

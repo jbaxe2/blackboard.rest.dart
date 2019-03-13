@@ -2,9 +2,20 @@ library blackboard.rest.courses;
 
 import 'dart:async' show Future;
 
+import 'src/courses/bb_rest_courses.dart';
 import 'src/courses/course.dart';
 import 'src/courses/course_child.dart';
 import 'src/courses/course_task.dart';
+
+import 'src/oauth2/access_token.dart';
+
+export 'src/courses/course.dart';
+export 'src/courses/course_child.dart';
+export 'src/courses/course_task.dart';
+
+/// The [getCoursesInstance] function...
+Courses getCoursesInstance (String host, AccessToken token) =>
+  new BbRestCourses (host, token);
 
 /// The [Courses] abstract class...
 abstract class Courses {

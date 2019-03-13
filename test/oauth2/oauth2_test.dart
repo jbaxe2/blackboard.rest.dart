@@ -9,6 +9,8 @@ import 'package:blackboard.rest/src/_scaffolding/error/improper_authorization.da
 import 'package:blackboard.rest/src/oauth2/access_token.dart';
 import 'package:blackboard.rest/src/oauth2/bb_rest_oauth2.dart';
 
+import 'package:blackboard.rest/oauth2.dart';
+
 import '../testable.dart';
 
 /// The [OAuth2Tester] class...
@@ -20,15 +22,29 @@ class OAuth2Tester implements Testable {
   @override
   void run() {
     group ('OAuth2:', () {
+      _testGetValidOAuth2Instance();
       _testObtainRequestedToken();
       _testInvalidClientInfoFailsToObtainToken();
+    });
+  }
+
+  /// The _testGetValidOAuth2Instance] method...
+  void _testGetValidOAuth2Instance() {
+    test ('Obtain a valid OAuth2 instance.', () async {
+      BlackboardRestOAuth2 bbRestOAuth = getOAuth2Instance (
+        Uri.parse (host), clientId, secret
+      );
+
+      expect ((bbRestOAuth is BbRestOAuth2), true);
     });
   }
 
   /// The [_testObtainRequestedToken] method...
   void _testObtainRequestedToken() {
     test ('Request a token and obtain it.', () async {
-      var bbRestOAuth = new BbRestOAuth2 (Uri.parse (host), clientId, secret);
+      BlackboardRestOAuth2 bbRestOAuth = getOAuth2Instance (
+        Uri.parse (host), clientId, secret
+      );
 
       AccessToken token;
       var error;
@@ -47,7 +63,9 @@ class OAuth2Tester implements Testable {
   /// The [_testInvalidClientInfoFailsToObtainToken] method...
   void _testInvalidClientInfoFailsToObtainToken() {
     test ('Obtaining a token fails with invalid client info.', () async {
-      var bbRestOAuth = new BbRestOAuth2 (Uri.parse (host), 'badclientid', 'secret');
+      BlackboardRestOAuth2 bbRestOAuth = getOAuth2Instance (
+        Uri.parse (host), 'badclientid', 'secret'
+      );
 
       AccessToken token;
       Exception error;

@@ -33,7 +33,7 @@ straightforward:
    2b. If at the user level, an authorization code (using the oauth2 API) must
        be obtained first.  This requires the user to manually log into
        Blackboard and authorize your application (this cannot be done
-       programmatically).  Users of this API will require both client and server
+       programmatically).  Users of this API will only work with the server
        code to handle the process.
 
 3. Whether using the application level, or obtaining an authorization code, an
@@ -44,10 +44,25 @@ straightforward:
 Note that, as is typical for REST API's, there is a limit on the number of calls
 that can be made in a single 24 hour period.
 
+
 **Example workflow:**
 
 Assume that an application (with key/secret) has been established with a Learn
 server.
+
+Obtain a token to use throughout a session:
+
+*BlackboardRestOAuth2 oauth2 = getOAuth2Instance ('host', 'clientId', 'secret');*
+
+If obtaining an authorization code:
+
+*oauth2.getAuthorizationCode (redirect_uri, 'code', httpResponse)*
+
+The redirect_uri is an instance of [Uri] that the user will be redirected to once
+the application permissions have been allowed.  This could be the same URI as the
+client application, or somewhere else.  The httpResponse should be the [HttpResponse]
+instance for which a redirect of the client may be triggered.
+
 
 **A Note on Tests...**
 
@@ -58,3 +73,5 @@ example, DTO factories).
 Since several of the tests are integration tests, some of the data used for
 testing deals with the information of the developer's instance (such as course
 ID's).  These would need to be replaced when testing for someone else's instance.
+
+Running the integration tests will count against the rate limit.

@@ -28,14 +28,22 @@ const Map<String, String> courses = {
   'get_task': 'courses/{courseId}/tasks/{taskId}'
 };
 
-/// The system endpoints...
-const Map<String, String> system = {
-  'get_version': 'system/version'
-};
-
 /// The course memberships endpoints...
 const Map<String, String> course_memberships = {
   'get_course_memberships': 'courses/{courseId}/users',
   'get_membership': 'courses/{courseId}/users/{userId}',
   'get_user_memberships': 'users/{userId}/courses'
+};
+
+/// The course grades endpoints...
+const Map<String, String> course_grades = {
+  'get_grade_columns': 'courses/{courseId}/gradebook/columns',
+  'get_grade_column': 'courses/{courseId}/gradebook/columns/{columnId}',
+  'get_column_attempts': 'courses/{courseId}/gradebook/columns/{columnId}/attempts',
+  'get_column_attempt': 'courses/{courseId}/gradebook/columns/{columnId}/attempts/{attemptId}'
+};
+
+/// The system endpoints...
+const Map<String, String> system = {
+  'get_version': 'system/version'
 };

@@ -5,8 +5,8 @@ import 'dart:async' show Future;
 import '../../courses.dart';
 
 import '../_scaffolding/configuration/endpoints.dart' show courses;
-import '../_scaffolding/connector/connector.dart';
 import '../_scaffolding/factory/course_factory.dart';
+import '../_scaffolding/bb_rest_services.dart';
 
 import '../oauth2/access_token.dart';
 
@@ -15,13 +15,9 @@ import 'course_child.dart';
 import 'course_task.dart';
 
 /// The [BbRestCourses] class...
-class BbRestCourses implements Courses {
-  BlackboardRestConnector _connector;
-
+class BbRestCourses extends BlackboardRestServices implements Courses {
   /// The [BbRestCourses] constructor...
-  BbRestCourses (String host, AccessToken token) {
-    _connector = RestConnectorFactory.buildRestConnector (host, token);
-  }
+  BbRestCourses (String host, AccessToken token) : super (host, token);
 
   /// The [getCourses] abstract method...
   Future<Iterable<Course>> getCourses() async {}
@@ -32,7 +28,7 @@ class BbRestCourses implements Courses {
   /// The [getCourse] abstract method...
   Future<Course> getCourse (String courseId) async {
     String endpoint = courses['get_course'].replaceFirst ('{courseId}', courseId);
-    Object rawResult = await _connector.sendBbRestRequest (endpoint);
+    Object rawResult = await connector.sendBbRestRequest (endpoint);
 
     return (new CourseFactory()).create ((rawResult as Map).cast());
   }
