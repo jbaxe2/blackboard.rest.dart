@@ -1,7 +1,12 @@
-library blackboard.rest.factories.dto;
+library blackboard.rest.factory.dto;
 
 /// The [BlackboardRestDtoFactory] abstract class...
 abstract class BlackboardRestDtoFactory {
   /// The [create] method...
-  Object create (Map<String, Object> rawDataTransferObject);
+  Object create (covariant Map<String, Object> rawDataTransferObject);
+
+  /// The [createAll] method...
+  Iterable<Object> createAll (
+    covariant Iterable<Map<String, Object>> rawDataTransferObjects
+  );
 }

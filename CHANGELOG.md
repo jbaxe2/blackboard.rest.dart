@@ -1,5 +1,9 @@
 **blackboard.rest**
 
+## 0.1.4+2
+- Added more info to the README, created an example for how to use the library,
+and added more to the library and test code, as per 0.1.4.
+
 ## 0.1.4+1
 - Additional factories, implementation classes, and tests.
 

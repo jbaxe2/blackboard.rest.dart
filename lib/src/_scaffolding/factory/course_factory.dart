@@ -1,4 +1,4 @@
-library blackboard.rest.factories.course;
+library blackboard.rest.factory.course;
 
 import '../../courses/course.dart';
 import '../../courses/ultra_status.dart';
@@ -9,9 +9,22 @@ import 'bb_rest_dto_factory.dart';
 
 /// The [CourseFactory] class...
 class CourseFactory implements BlackboardRestDtoFactory {
+  /// The [CourseFactory] constructor...
+  CourseFactory();
+
+  /// The [createAll] method...
+  @override
+  Iterable<Course> createAll (covariant Iterable<Map<String, Object>> rawCourses) {
+    var courses = new List<Course>();
+
+    rawCourses.forEach ((rawCourse) => courses.add (create (rawCourse)));
+
+    return courses;
+  }
+
   /// The [create] method...
   @override
-  Course create (Map<String, Object> rawCourse) {
+  Course create (covariant Map<String, Object> rawCourse) {
     if (!(rawCourse.containsKey ('id') &&
           rawCourse.containsKey ('uuid') &&
           rawCourse.containsKey ('courseId') &&

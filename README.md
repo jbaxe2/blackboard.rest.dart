@@ -50,9 +50,12 @@ that can be made in a single 24 hour period.
 Assume that an application (with key/secret) has been established with a Learn
 server.
 
-Obtain a token to use throughout a session:
+Create a Blackboard REST OAuth2 instance that will be used to obtain a token
+for service requests:
 
-*BlackboardRestOAuth2 oauth2 = getOAuth2Instance ('host', 'clientId', 'secret');*
+*BlackboardRestOAuth2 oauth2 = getOAuth2Instance (
+  Uri.parse ('host'), 'clientId', 'secret'
+);*
 
 If obtaining an authorization code:
 
@@ -60,8 +63,30 @@ If obtaining an authorization code:
 
 The redirect_uri is an instance of [Uri] that the user will be redirected to once
 the application permissions have been allowed.  This could be the same URI as the
-client application, or somewhere else.  The httpResponse should be the [HttpResponse]
-instance for which a redirect of the client may be triggered.
+client application, or somewhere else.  The httpResponse should be the
+[HttpResponse] instance for which the redirect of the client may be triggered.
+
+Next we'll need to request the token:
+
+*AccessToken token = await oauth2.requestToken ('client_credentials')*
+
+OR (if we received an authorization code to act on behalf of a specific user)
+
+*AccessToken token = await oauth2.requestToken (
+  'authorization_code', 'the_auth_code'
+)*
+
+In this case, 'client_credentials' is used when acting on behalf of an
+application, and 'authorization_code' is used when we have received a code by
+a specific user allowing the application to act on his or her behalf.
+
+Note that if using an authorization code, this must be handled in two *separate*
+requests.  The first request redirects the user to obtain the authorization code.
+The second request makes use of the authorization code (so it must be passed in
+by the client application on the second request).  When acting on behalf of an
+application, there is no need to request authorization.
+
+Further examples can be found in the example folder.
 
 
 **A Note on Tests...**

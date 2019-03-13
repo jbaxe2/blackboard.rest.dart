@@ -16,7 +16,8 @@ import '../error/rest_exception.dart';
 abstract class BlackboardRestConnector {
   /// The [sendBbRestRequest] abstract method...
   Future<dynamic> sendBbRestRequest (
-    String endpoint, {String method = 'get', Map<String, Object> data}
+    String endpoint,
+    {String method = 'get', Map<String, Object> data, int useVersion = 1}
   );
 }
 
@@ -40,7 +41,8 @@ class _BlackboardRestConnector implements BlackboardRestConnector {
   /// The [sendBbRestRequest] abstract method...
   @override
   Future<dynamic> sendBbRestRequest (
-    String endpoint, {String method = 'get', Map<String, Object> data}
+    String endpoint,
+    {String method = 'get', Map<String, Object> data, int useVersion = 1}
   ) async {
     if (endpoint.isEmpty) {
       throw new BlackboardRestException (
@@ -48,7 +50,9 @@ class _BlackboardRestConnector implements BlackboardRestConnector {
       );
     }
 
-    Uri endpointUri = Uri.parse ('$host$base$endpoint');
+    Uri endpointUri = Uri.parse (
+      '$host${1 == useVersion ? base : baseV2}$endpoint'
+    );
 
     Map<String, String> httpHeaders = {
       HttpHeaders.authorizationHeader: 'Bearer ${accessToken.access_token}'
