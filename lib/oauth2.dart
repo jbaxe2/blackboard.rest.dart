@@ -1,6 +1,7 @@
 library blackboard.rest.oauth2;
 
 import 'dart:async' show Future;
+import 'dart:io' show HttpResponse;
 
 import 'src/oauth2/access_token.dart';
 
@@ -8,7 +9,7 @@ import 'src/oauth2/access_token.dart';
 abstract class BlackboardRestOAuth2 {
   /// The [getAuthorizationCode] abstract method...
   Future<void> getAuthorizationCode (
-    Uri redirect_uri, String response_type, String client_id,
+    Uri redirect_uri, String response_type, String client_id, HttpResponse response,
     {String scope, String state}
   );
 

@@ -1,6 +1,7 @@
 library blackboard.rest.implementation.oauth2;
 
 import 'dart:async' show Future;
+import 'dart:io' show HttpResponse;
 
 import '../../oauth2.dart';
 
@@ -25,13 +26,13 @@ class BbRestOAuth2 implements BlackboardRestOAuth2 {
   /// The [getAuthorizationCode] abstract method...
   @override
   Future<void> getAuthorizationCode (
-    Uri redirect_uri, String response_type, String client_id,
+    Uri redirect_uri, String response_type, String client_id, HttpResponse response,
     {String scope, String state}
   ) async {
     _createAuthorizer ('authorization_code');
 
     await (_restAuthorizer as RestUserAuthorizer).requestAuthorizationCode (
-      redirect_uri.toString()
+      redirect_uri.toString(), response
     );
   }
 

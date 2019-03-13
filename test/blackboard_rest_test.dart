@@ -3,6 +3,7 @@ library blackboard.rest.tests;
 
 import 'package:test/test.dart';
 
+import 'courses/courses_test.dart';
 import 'oauth2/oauth2_test.dart';
 
 import 'testable.dart';
@@ -19,5 +20,6 @@ class _BbRestTester implements Testable {
   @override
   void run() {
     (new OAuth2Tester()).run();
+    (new CoursesTester()).run();
   }
 }

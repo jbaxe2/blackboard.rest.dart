@@ -3,14 +3,13 @@ library blackboard.rest.tests.oauth2;
 
 import 'package:test/test.dart';
 
+import 'package:blackboard.rest/src/_scaffolding/configuration/oauth2_connection_info.dart';
 import 'package:blackboard.rest/src/_scaffolding/error/improper_authorization.dart';
 
 import 'package:blackboard.rest/src/oauth2/access_token.dart';
 import 'package:blackboard.rest/src/oauth2/bb_rest_oauth2.dart';
 
 import '../testable.dart';
-
-import 'oauth2_connection_info.dart';
 
 /// The [OAuth2Tester] class...
 class OAuth2Tester implements Testable {

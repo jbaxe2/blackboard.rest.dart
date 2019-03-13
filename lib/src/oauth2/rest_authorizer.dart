@@ -2,7 +2,7 @@ library blackboard.rest.oauth2.authorizer;
 
 import 'dart:async' show Future;
 import 'dart:convert' show Base64Encoder, json;
-import 'dart:io' show HttpHeaders;
+import 'dart:io' show HttpHeaders, HttpResponse;
 
 import 'package:http/http.dart' as http;
 

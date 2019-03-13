@@ -1,5 +1,8 @@
 **blackboard.rest**
 
+## 0.1.4+1
+- Additional factories, implementation classes, and tests.
+
 ## 0.1.4
 - Creation of factories for DTO's.
   - Factories for the DTO's will (for now) only use the required params.

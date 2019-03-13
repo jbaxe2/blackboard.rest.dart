@@ -51,7 +51,7 @@ class _BlackboardRestConnector implements BlackboardRestConnector {
     Uri endpointUri = Uri.parse ('$host$base$endpoint');
 
     Map<String, String> httpHeaders = {
-      HttpHeaders.authorizationHeader: 'Bearer: ${accessToken.access_token}'
+      HttpHeaders.authorizationHeader: 'Bearer ${accessToken.access_token}'
     };
 
     http.Response response;

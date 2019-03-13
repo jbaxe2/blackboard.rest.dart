@@ -3,7 +3,7 @@ part of blackboard.rest.oauth2.authorizer;
 /// The [RestUserAuthorizer] abstract class...
 abstract class RestUserAuthorizer extends RestAuthorizer {
   /// The [requestAuthorizationCode] method...
-  Future<void> requestAuthorizationCode (String redirectUri);
+  Future<void> requestAuthorizationCode (String redirectUri, HttpResponse response);
 
   /// The [requestUserAuthorization] abstract method...
   Future<AccessToken> requestUserAuthorization (
@@ -19,14 +19,15 @@ class _RestUserAuthorizer extends _RestAuthorizer implements RestUserAuthorizer 
 
   /// The [requestAuthorizationCode] method...
   @override
-  Future<void> requestAuthorizationCode (String redirectUri) async {
-    //await html.loadLibrary();
-
+  Future<void> requestAuthorizationCode (
+    String redirectUri, HttpResponse response
+  ) async {
     String authorizeUriStr = '$host$base${oauth2['authorization_code']}'
       '?redirect_uri=${Uri.encodeFull (redirectUri)}&client_id=$clientId'
       '&response_type=code&scope=read';
 
-    //html.window.location.replace (authorizeUriStr);
+    response.headers.add (HttpHeaders.locationHeader, authorizeUriStr);
+    await response.close();
   }
 
   /// The [requestUserAuthorization] method...

@@ -25,9 +25,11 @@ straightforward:
 
 2. The security context working with Blackboard's API can be done with at the
    application level (2-legged OAuth) or the user level (3-legged OAuth).
+
    2a. If at the application level, a specific Learn user must still be
        associated with the application, for which access to the various
        endpoints will be done based on the entitlements for that user.
+
    2b. If at the user level, an authorization code (using the oauth2 API) must
        be obtained first.  This requires the user to manually log into
        Blackboard and authorize your application (this cannot be done
@@ -46,3 +48,13 @@ that can be made in a single 24 hour period.
 
 Assume that an application (with key/secret) has been established with a Learn
 server.
+
+**A Note on Tests...**
+
+It should be noted that due to the nature of this library, most of the tests are
+integration tests, although unit tests will be deployed where appropriate (for
+example, DTO factories).
+
+Since several of the tests are integration tests, some of the data used for
+testing deals with the information of the developer's instance (such as course
+ID's).  These would need to be replaced when testing for someone else's instance.
