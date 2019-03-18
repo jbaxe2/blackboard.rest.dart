@@ -3,7 +3,7 @@ library blackboard.rest.configuration.endpoints;
 /// The base endpoint for all REST API calls...
 const String base = '/learn/api/public/v1/';
 
-const String baseV2 = '/learn/api/public/v2';
+const String baseV2 = '/learn/api/public/v2/';
 
 /// The oauth endpoints...
 const Map<String, String> oauth2 = {

@@ -35,9 +35,9 @@ class Attempt {
 
   /// The [Attempt] constructor...
   Attempt (
-    this.id, this.userId, this.groupAttemptId, this.groupOverride,
-    this.displayGrade, this.created,
-    {this.status, this.text, this.score, this.notes, this.feedback,
-     this.studentComments, this.studentSubmission, this.exempt}
+    this.id, this.userId, this.status, this.displayGrade, this.text, this.score,
+    this.exempt, this.created,
+    {this.groupAttemptId, this.groupOverride, this.notes, this.feedback,
+     this.studentComments, this.studentSubmission}
   );
 }

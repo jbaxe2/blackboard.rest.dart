@@ -11,13 +11,19 @@ import 'package:blackboard.rest/src/oauth2/bb_rest_oauth2.dart';
 
 /// The [TestAuthorizer] class...
 class TestAuthorizer {
+  static AccessToken _accessToken;
+
   /// The [TestAuthorizer] constructor...
   TestAuthorizer();
 
   /// The [authorizeForTests] method...
   Future<AccessToken> authorizeForTests() async {
+    if (null != _accessToken) {
+      return _accessToken;
+    }
+
     var bbRestOAuth = new BbRestOAuth2 (Uri.parse (host), clientId, secret);
 
-    return await bbRestOAuth.requestToken ('client_credentials');
+    return _accessToken = await bbRestOAuth.requestToken ('client_credentials');
   }
 }

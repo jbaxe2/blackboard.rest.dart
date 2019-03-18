@@ -30,8 +30,8 @@ class GradeColumn {
 
   /// The [GradeColumn] constructor...
   GradeColumn (
-    this.id, this.name, this.created, this.contentId, this.grading,
+    this.id, this.name, this.score, this.availability, this.grading,
     {this.externalId, this.displayName, this.description, this.externalGrade,
-     this.score, this.availability}
+     this.created, this.contentId}
   );
 }

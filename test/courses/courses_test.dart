@@ -4,7 +4,6 @@ library blackboard.rest.tests.courses;
 import 'package:test/test.dart';
 
 import 'package:blackboard.rest/src/courses/bb_rest_courses.dart';
-import 'package:blackboard.rest/src/courses/course.dart';
 
 import 'package:blackboard.rest/courses.dart';
 
@@ -29,9 +28,10 @@ class CoursesTester extends TestAuthorizer implements Testable {
 
   /// The [_testGetValidCoursesInstance] method...
   void _testGetValidCoursesInstance() {
-    test ('Get a Courses instance.', () async {
+    test ('Get a valid courses service instance.', () async {
       Courses courses = getCoursesInstance (host, await authorizeForTests());
 
+      assert (null != courses);
       expect ((courses is BbRestCourses), true);
     });
   }

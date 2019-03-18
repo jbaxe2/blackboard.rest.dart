@@ -5,7 +5,8 @@ import 'dart:async' show Future;
 import '../../course_grades.dart';
 
 import '../_scaffolding/configuration/endpoints.dart' show course_grades;
-import '../_scaffolding/factory/course_grade_factory.dart';
+import '../_scaffolding/factory/course_grades/column_attempt_factory.dart';
+import '../_scaffolding/factory/course_grades/grade_column_factory.dart';
 import '../_scaffolding/bb_rest_services.dart';
 
 import '../oauth2/access_token.dart';
@@ -25,9 +26,9 @@ class BbRestCourseGrades extends BlackboardRestServices implements CourseGrades 
       .replaceFirst ('{courseId}', courseId);
 
     Iterable<Object> rawResults =
-      await connector.sendBbRestRequest (endpoint, useVersion: 2);
+      (await connector.sendBbRestRequest (endpoint, useVersion: 2) as Map)['results'];
 
-    return (new CourseGradeFactory()).createAll (rawResults);
+    return (new GradeColumnFactory()).createAll (rawResults.cast());
   }
 
   /// The [createGradeColumn] method...
@@ -36,10 +37,12 @@ class BbRestCourseGrades extends BlackboardRestServices implements CourseGrades 
   /// The [getGradeColumn] method...
   Future<GradeColumn> getGradeColumn (String courseId, String columnId) async {
     String endpoint = course_grades['get_grade_column']
-      .replaceFirst ('{courseId', courseId)
+      .replaceFirst ('{courseId}', courseId)
       .replaceFirst ('{columnId}', columnId);
 
     Object rawResult = await connector.sendBbRestRequest (endpoint, useVersion: 2);
+
+    return (new GradeColumnFactory()).create (rawResult);
   }
 
   /// The [updateGradeColumn] method...
@@ -50,7 +53,16 @@ class BbRestCourseGrades extends BlackboardRestServices implements CourseGrades 
   /// The [getColumnAttempts] method...
   Future<Iterable<Attempt>> getColumnAttempts (
     String courseId, String columnId
-  ) async {}
+  ) async {
+    String endpoint = course_grades['get_column_attempts']
+      .replaceFirst ('{courseId}', courseId)
+      .replaceFirst ('{columnId}', columnId);
+
+    Iterable<Object> rawResults =
+      (await connector.sendBbRestRequest (endpoint, useVersion: 2) as Map)['results'];
+
+    return (new ColumnAttemptFactory()).createAll (rawResults.cast());
+  }
 
   /// The [createColumnAttempt] method...
   Future<void> createColumnAttempt (String columnId, Attempt attempt) async {}
@@ -58,7 +70,16 @@ class BbRestCourseGrades extends BlackboardRestServices implements CourseGrades 
   /// The [getColumnAttempt] method...
   Future<Attempt> getColumnAttempt (
     String courseId, String columnId, String attemptId
-  ) async {}
+  ) async {
+    String endpoint = course_grades['get_column_attempt']
+      .replaceFirst ('{courseId}', courseId)
+      .replaceFirst ('{columnId}', columnId)
+      .replaceFirst ('{attemptId}', attemptId);
+
+    Object rawResult = await connector.sendBbRestRequest (endpoint, useVersion: 2);
+
+    return (new ColumnAttemptFactory()).create (rawResult);
+  }
 
   /// The [updateColumnAttempt] method...
   Future<void> updateColumnAttempt (

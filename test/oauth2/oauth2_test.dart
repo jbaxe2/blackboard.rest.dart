@@ -30,7 +30,7 @@ class OAuth2Tester implements Testable {
 
   /// The _testGetValidOAuth2Instance] method...
   void _testGetValidOAuth2Instance() {
-    test ('Obtain a valid OAuth2 instance.', () async {
+    test ('Obtain a valid OAuth2 service instance.', () async {
       BlackboardRestOAuth2 bbRestOAuth = getOAuth2Instance (
         Uri.parse (host), clientId, secret
       );

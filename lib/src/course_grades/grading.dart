@@ -20,7 +20,7 @@ class Grading {
 
   /// The [Grading] constructor...
   Grading (
-    this.type, this.schemaId, this.anonymousGrading,
-    {this.due, this.attemptsAllowed, this.scoringModel}
+    this.type, this.schemaId,
+    {this.due, this.attemptsAllowed, this.scoringModel, this.anonymousGrading}
   );
 }

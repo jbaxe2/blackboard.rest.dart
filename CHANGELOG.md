@@ -1,5 +1,8 @@
 **blackboard.rest**
 
+## 0.1.4+3
+- Added more grading implementation and test code.
+
 ## 0.1.4+2
 - Added more info to the README, created an example for how to use the library,
 and added more to the library and test code, as per 0.1.4.
