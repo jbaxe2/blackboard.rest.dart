@@ -1,5 +1,9 @@
 **blackboard.rest**
 
+## 0.1.4+4
+- Added a second example, for retrieving a submission attempt via the course
+grades service.
+
 ## 0.1.4+3
 - Added more grading implementation and test code.
 
