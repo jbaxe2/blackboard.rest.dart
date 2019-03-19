@@ -23,15 +23,15 @@ class BbRestUsers extends BlackboardRestServices implements Users {
   Future<Iterable<User>> getUsers() async {
     String endpoint = users['users'];
 
-    Iterable<Object> rawResults;
+    Iterable<Object> rawUsers;
 
     try {
-      rawResults = (await connector.sendBbRestRequest (endpoint) as Map)['results'];
+      rawUsers = (await connector.sendBbRestRequest (endpoint) as Map)['results'];
     } catch (e) {
       throw e as ImproperUser;
     }
 
-    return (new UserFactory()).createAll (rawResults.cast());
+    return (new UserFactory()).createAll (rawUsers.cast());
   }
 
   /// The [createUser] method...
@@ -43,15 +43,15 @@ class BbRestUsers extends BlackboardRestServices implements Users {
   Future<User> getUser (String userId) async {
     String endpoint = users['user'].replaceFirst ('{userId}', userId);
 
-    Object rawResult;
+    Object rawUser;
 
     try {
-      rawResult = await connector.sendBbRestRequest (endpoint);
+      rawUser = await connector.sendBbRestRequest (endpoint);
     } catch (e) {
       throw e as ImproperUser;
     }
 
-    return (new UserFactory()).create (rawResult);
+    return (new UserFactory()).create (rawUser);
   }
 
   /// The [updateUser] method...

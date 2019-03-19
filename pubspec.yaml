@@ -1,6 +1,6 @@
 name: blackboard.rest
 description: A library for Blackboard's REST API.
-version: 0.1.5
+version: 0.1.5+1
 author: Joseph B. Axenroth
 
 environment:

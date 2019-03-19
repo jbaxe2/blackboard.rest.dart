@@ -30,16 +30,16 @@ class BbRestCourseGrades extends BlackboardRestServices implements CourseGrades 
     String endpoint = course_grades['get_grade_columns']
       .replaceFirst ('{courseId}', courseId);
 
-    Iterable<Object> rawResults;
+    Iterable<Object> rawGrades;
 
     try {
-      rawResults =
+      rawGrades =
         (await connector.sendBbRestRequest (endpoint, useVersion: 2) as Map)['results'];
     } catch (e) {
       throw e as InvalidGrade;
     }
 
-    return (new GradeColumnFactory()).createAll (rawResults.cast());
+    return (new GradeColumnFactory()).createAll (rawGrades.cast());
   }
 
   /// The [createGradeColumn] method...
@@ -52,15 +52,15 @@ class BbRestCourseGrades extends BlackboardRestServices implements CourseGrades 
       .replaceFirst ('{courseId}', courseId)
       .replaceFirst ('{columnId}', columnId);
 
-    Object rawResult;
+    Object rawGrade;
 
     try {
-      rawResult = await connector.sendBbRestRequest (endpoint, useVersion: 2);
+      rawGrade = await connector.sendBbRestRequest (endpoint, useVersion: 2);
     } catch (e) {
       throw e as InvalidGrade;
     }
 
-    return (new GradeColumnFactory()).create (rawResult);
+    return (new GradeColumnFactory()).create (rawGrade);
   }
 
   /// The [updateGradeColumn] method...
@@ -78,16 +78,16 @@ class BbRestCourseGrades extends BlackboardRestServices implements CourseGrades 
       .replaceFirst ('{courseId}', courseId)
       .replaceFirst ('{columnId}', columnId);
 
-    Iterable<Object> rawResults;
+    Iterable<Object> rawGrades;
 
     try {
-      rawResults =
+      rawGrades =
         (await connector.sendBbRestRequest (endpoint, useVersion: 2) as Map)['results'];
     } catch (e) {
       throw e as InvalidGrade;
     }
 
-    return (new ColumnAttemptFactory()).createAll (rawResults.cast());
+    return (new ColumnAttemptFactory()).createAll (rawGrades.cast());
   }
 
   /// The [createColumnAttempt] method...
@@ -104,15 +104,15 @@ class BbRestCourseGrades extends BlackboardRestServices implements CourseGrades 
       .replaceFirst ('{columnId}', columnId)
       .replaceFirst ('{attemptId}', attemptId);
 
-    Object rawResult;
+    Object rawGrade;
 
     try {
-      rawResult = await connector.sendBbRestRequest (endpoint, useVersion: 2);
+      rawGrade = await connector.sendBbRestRequest (endpoint, useVersion: 2);
     } catch (e) {
       throw e as InvalidGrade;
     }
 
-    return (new ColumnAttemptFactory()).create (rawResult);
+    return (new ColumnAttemptFactory()).create (rawGrade);
   }
 
   /// The [updateColumnAttempt] method...

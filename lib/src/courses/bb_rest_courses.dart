@@ -32,15 +32,15 @@ class BbRestCourses extends BlackboardRestServices implements Courses {
   @override
   Future<Course> getCourse (String courseId) async {
     String endpoint = courses['get_course'].replaceFirst ('{courseId}', courseId);
-    Object rawResult;
+    Object rawCourse;
 
     try {
-      rawResult = await connector.sendBbRestRequest (endpoint);
+      rawCourse = await connector.sendBbRestRequest (endpoint);
     } catch (e) {
       throw e as InvalidCourse;
     }
 
-    return (new CourseFactory()).create ((rawResult as Map).cast());
+    return (new CourseFactory()).create ((rawCourse as Map).cast());
   }
 
   /// The [updateCourse] abstract method...

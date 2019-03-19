@@ -17,15 +17,20 @@ const Map<String, String> announcements = {
   'get_announcement': 'announcements/{announcementId}'
 };
 
-/// The courses endpoints...
-const Map<String, String> courses = {
-  'get_courses': 'courses',
-  'get_course': 'courses/{courseId}',
-  'get_children': 'courses/{courseId}/children',
-  'get_child': 'courses/{courseId}/children/{childCourseId}',
-  'copy_course': 'courses/{courseId}/copy',
-  'get_cross_list_set': 'courses/{courseId}/crossListSet',
-  'get_task': 'courses/{courseId}/tasks/{taskId}'
+/// The course grade attempts endpoints...
+const Map<String, String> course_grade_attempts = {
+  'get_attempt_file_metadata_list': 'courses/{courseId}/gradebook/attempts/{attemptId}/files',
+  'attach_attempt_file': 'courses/{courseId}/gradebook/attempts/{attemptId}/files',
+  'get_attempt_file_metadata': 'courses/{courseId}/gradebook/attempts/{attemptId}/files/{attemptFileId}',
+  'download': 'courses/{courseId}/gradebook/attempts/{attemptId}/files/{attemptFileId}/download'
+};
+
+/// The course grades endpoints...
+const Map<String, String> course_grades = {
+  'get_grade_columns': 'courses/{courseId}/gradebook/columns',
+  'get_grade_column': 'courses/{courseId}/gradebook/columns/{columnId}',
+  'get_column_attempts': 'courses/{courseId}/gradebook/columns/{columnId}/attempts',
+  'get_column_attempt': 'courses/{courseId}/gradebook/columns/{columnId}/attempts/{attemptId}'
 };
 
 /// The course memberships endpoints...
@@ -35,12 +40,15 @@ const Map<String, String> course_memberships = {
   'get_user_memberships': 'users/{userId}/courses'
 };
 
-/// The course grades endpoints...
-const Map<String, String> course_grades = {
-  'get_grade_columns': 'courses/{courseId}/gradebook/columns',
-  'get_grade_column': 'courses/{courseId}/gradebook/columns/{columnId}',
-  'get_column_attempts': 'courses/{courseId}/gradebook/columns/{columnId}/attempts',
-  'get_column_attempt': 'courses/{courseId}/gradebook/columns/{columnId}/attempts/{attemptId}'
+/// The courses endpoints...
+const Map<String, String> courses = {
+  'get_courses': 'courses',
+  'get_course': 'courses/{courseId}',
+  'get_children': 'courses/{courseId}/children',
+  'get_child': 'courses/{courseId}/children/{childCourseId}',
+  'copy_course': 'courses/{courseId}/copy',
+  'get_cross_list_set': 'courses/{courseId}/crossListSet',
+  'get_task': 'courses/{courseId}/tasks/{taskId}'
 };
 
 /// The system endpoints...

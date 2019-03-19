@@ -2,7 +2,14 @@ library blackboard.rest.memberships;
 
 import 'dart:async' show Future;
 
+import 'src/course_memberships/bb_rest_course_memberships.dart';
 import 'src/course_memberships/membership.dart';
+
+import 'src/oauth2/access_token.dart';
+
+/// The [getCourseMembershipsInstance] function...
+CourseMemberships getCourseMembershipsInstance (String host, AccessToken token) =>
+  new BbRestCourseMemberships (host, token);
 
 /// The [CourseMemberships] abstract class...
 abstract class CourseMemberships {

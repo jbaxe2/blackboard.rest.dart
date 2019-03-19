@@ -1,5 +1,8 @@
 **blackboard.rest**
 
+## 0.1.5+1
+- Start of adding course grade attempts DTO, interface, and related code.
+
 ## 0.1.5
 - Added an error parser to help capture request errors.
   - Worked in the error parser to the request connector and service
