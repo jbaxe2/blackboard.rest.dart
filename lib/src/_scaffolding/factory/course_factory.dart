@@ -41,19 +41,19 @@ class CourseFactory implements BlackboardRestDtoFactory {
   }
 
   /// The [_parseCourse] method...
-  Course _parseCourse (Map<String, Object> rawCourse) {
-    var course = new Course (
+  Course _parseCourse (covariant Map<String, Object> rawCourse) {
+    return new Course (
       rawCourse['id'], rawCourse['uuid'], rawCourse['courseId'],
       rawCourse['externalId'], rawCourse['name'],
       DateTime.parse (rawCourse['created']), rawCourse['organization'],
       rawCourse['externalAccessUrl'], rawCourse['guestAccessUrl']
     );
-
-    return course;
   }
 
   /// The [_establishOptionalParams] method...
-  Map<String, Object> _establishOptionalParams (Map<String, Object> rawCourse) {
+  Map<String, Object> _establishOptionalParams (
+    covariant Map<String, Object> rawCourse
+  ) {
     var optionalParams = new Map<String, Object>()
       ..['dataSourceId'] = ''
       ..['description'] = ''

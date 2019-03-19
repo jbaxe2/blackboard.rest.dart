@@ -1,5 +1,12 @@
 **blackboard.rest**
 
+## 0.1.5
+- Added an error parser to help capture request errors.
+  - Worked in the error parser to the request connector and service
+  implementation classes.
+- Start of working on users service implementation, factory, and tests.
+- Start of working on course memberships implementation, factory, and tests.
+
 ## 0.1.4+4
 - Added a second example, for retrieving a submission attempt via the course
 grades service.

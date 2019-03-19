@@ -47,3 +47,9 @@ const Map<String, String> course_grades = {
 const Map<String, String> system = {
   'get_version': 'system/version'
 };
+
+/// The users endpoints
+const Map<String, String> users = {
+  'users': 'users',
+  'user': 'users/{userId}'
+};

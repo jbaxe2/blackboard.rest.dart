@@ -10,6 +10,7 @@ import '../../oauth2/access_token.dart';
 
 import '../configuration/endpoints.dart';
 
+import '../error/error_parser.dart';
 import '../error/rest_exception.dart';
 
 /// The [BlackboardRestConnector] abstract class...
@@ -30,7 +31,7 @@ abstract class RestConnectorFactory {
 }
 
 /// The [_BlackboardRestConnector] class...
-class _BlackboardRestConnector implements BlackboardRestConnector {
+class _BlackboardRestConnector extends ErrorParser implements BlackboardRestConnector {
   final String host;
 
   final AccessToken accessToken;
@@ -77,7 +78,14 @@ class _BlackboardRestConnector implements BlackboardRestConnector {
       throw new BlackboardRestException (e.toString());
     }
 
-    return (null == response) ? {} : json.decode (response.body);
+    Object decodedResponse = json.decode (response?.body);
+    BlackboardRestException exception;
+
+    if (null != (exception = parseError (decodedResponse))) {
+      throw exception;
+    }
+
+    return (null == response) ? {} : decodedResponse;
   }
 
   /// The [_handleGetRequest] method...

@@ -29,10 +29,10 @@ class CoursesTester extends TestAuthorizer implements Testable {
   /// The [_testGetValidCoursesInstance] method...
   void _testGetValidCoursesInstance() {
     test ('Get a valid courses service instance.', () async {
-      Courses courses = getCoursesInstance (host, await authorizeForTests());
+      Courses coursesService = getCoursesInstance (host, await authorizeForTests());
 
-      assert (null != courses);
-      expect ((courses is BbRestCourses), true);
+      assert (null != coursesService);
+      expect ((coursesService is BbRestCourses), true);
     });
   }
 
