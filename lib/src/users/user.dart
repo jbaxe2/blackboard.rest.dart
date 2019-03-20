@@ -34,8 +34,9 @@ class User implements Mappable {
 
   /// The [User] constructor...
   User (
-    this.id, this.uuid, this.userName, this.created, this.lastLogin, this.name,
-    {this.externalId, this.dataSourceId, this.studentId, this.systemRoleIds,
+    this.id, this.uuid, this.externalId, this.userName, this.created,
+    this.lastLogin, this.name,
+    {this.dataSourceId, this.studentId, this.systemRoleIds,
      this.institutionRoleIds, this.availability}
   );
 

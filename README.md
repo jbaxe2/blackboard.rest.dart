@@ -91,9 +91,9 @@ Further examples can be found in the example folder.
 
 **A Note on Tests...**
 
-It should be noted that due to the nature of this library, most of the tests are
-integration tests, although unit tests will be deployed where appropriate (for
-example, DTO factories).
+It should be noted that due to the nature of this library (i.e., working with a
+remote API), most of the tests are integration tests, although unit tests will
+be deployed where appropriate (for example, DTO factories).
 
 Since several of the tests are integration tests, some of the data used for
 testing deals with the information of the developer's instance (such as course

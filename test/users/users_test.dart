@@ -75,8 +75,7 @@ class UsersTester extends TestAuthorizer implements Testable {
       assert (null == error);
       assert (null != user);
 
-      // This particular user does not have an external ID, so value is null.
-      expect ((null == user.externalId), true);
+      expect (('jaxenroth' == user.externalId), true);
     });
   }
 

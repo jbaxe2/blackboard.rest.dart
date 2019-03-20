@@ -1,5 +1,8 @@
 **blackboard.rest**
 
+## 0.1.5+3
+- Resolved an issue with obtaining the user via externalId.
+
 ## 0.1.5+2
 - Added system implementation code and tests.
 

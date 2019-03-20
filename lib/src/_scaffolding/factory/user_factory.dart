@@ -27,6 +27,7 @@ class UserFactory implements BlackboardRestDtoFactory {
   User create (covariant Map<String, Object> rawUser) {
     if (!(rawUser.containsKey ('id') &&
           rawUser.containsKey ('uuid') &&
+          rawUser.containsKey ('externalId') &&
           rawUser.containsKey ('userName') &&
           rawUser.containsKey ('created') &&
           rawUser.containsKey ('lastLogin') &&
@@ -40,7 +41,7 @@ class UserFactory implements BlackboardRestDtoFactory {
   /// The [_parseUser] method...
   User _parseUser (covariant Map<String, Object> rawUser) {
     return new User (
-      rawUser['id'], rawUser['uuid'], rawUser['userName'],
+      rawUser['id'], rawUser['uuid'], rawUser['externalId'], rawUser['userName'],
       DateTime.parse (rawUser['created']), DateTime.parse (rawUser['lastLogin']),
       _parseName (rawUser['name'])
     );
