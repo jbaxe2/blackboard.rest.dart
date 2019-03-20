@@ -8,7 +8,7 @@ class Version {
 
   final int patch;
 
-  final int build;
+  final String build;
 
   /// The [Version] constructor...
   Version (this.major, this.minor, this.patch, this.build);

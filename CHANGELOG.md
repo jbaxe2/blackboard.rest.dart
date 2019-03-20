@@ -1,5 +1,8 @@
 **blackboard.rest**
 
+## 0.1.5+2
+- Added system implementation code and tests.
+
 ## 0.1.5+1
 - Start of adding course grade attempts DTO, interface, and related code.
 

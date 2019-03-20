@@ -1,7 +1,9 @@
 library blackboard.rest.users.name;
 
+import '../_scaffolding/util/mappable.dart';
+
 /// The [Name] class...
-class Name {
+class Name implements Mappable {
   final String given;
 
   final String family;
@@ -19,4 +21,12 @@ class Name {
     this.given, this.family,
     {this.middle, this.other, this.suffix, this.title}
   );
+
+  /// The [toMap] method...
+  @override
+  Map<String, String> toMap() {
+    return new Map<String, String>()
+      ..['given'] = given
+      ..['family'] = family;
+  }
 }

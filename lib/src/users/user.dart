@@ -1,11 +1,13 @@
 library blackboard.rest.users.user;
 
+import '../_scaffolding/util/mappable.dart';
+
 import 'name.dart';
 import 'system_role.dart';
 import 'user_availability.dart';
 
 /// The [User] class...
-class User {
+class User implements Mappable {
   final String id;
 
   final String uuid;
@@ -36,4 +38,16 @@ class User {
     {this.externalId, this.dataSourceId, this.studentId, this.systemRoleIds,
      this.institutionRoleIds, this.availability}
   );
+
+  /// The [toMap] method...
+  @override
+  Map<String, Object> toMap() {
+    return new Map<String, Object>()
+      ..['id'] = id
+      ..['uuid'] = uuid
+      ..['userName'] = userName
+      ..['created'] = created.toUtc().toString()
+      ..['lastLogin'] = lastLogin.toUtc().toString()
+      ..['name'] = name.toMap();
+  }
 }

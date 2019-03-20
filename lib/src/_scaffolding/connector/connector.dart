@@ -18,7 +18,7 @@ abstract class BlackboardRestConnector {
   /// The [sendBbRestRequest] abstract method...
   Future<dynamic> sendBbRestRequest (
     String endpoint,
-    {String method = 'get', Map<String, Object> data, int useVersion = 1}
+    {String method = 'get', covariant Map<String, Object> data, int useVersion = 1}
   );
 }
 
@@ -43,7 +43,7 @@ class _BlackboardRestConnector extends ErrorParser implements BlackboardRestConn
   @override
   Future<dynamic> sendBbRestRequest (
     String endpoint,
-    {String method = 'get', Map<String, Object> data, int useVersion = 1}
+    {String method = 'get', covariant Map<String, Object> data, int useVersion = 1}
   ) async {
     if (endpoint.isEmpty) {
       throw new BlackboardRestException (
@@ -90,7 +90,8 @@ class _BlackboardRestConnector extends ErrorParser implements BlackboardRestConn
 
   /// The [_handleGetRequest] method...
   Future<http.Response> _handleGetRequest (
-    Uri endpointUri, Map<String, String> httpHeaders, [Map<String, Object> data]
+    Uri endpointUri, Map<String, String> httpHeaders,
+    [covariant Map<String, Object> data]
   ) async {
     httpHeaders[HttpHeaders.contentTypeHeader] = 'application/json';
 
@@ -103,7 +104,8 @@ class _BlackboardRestConnector extends ErrorParser implements BlackboardRestConn
 
   /// The [_handlePostRequest] method...
   Future<http.Response> _handlePostRequest (
-    Uri endpointUri, Map<String, String> httpHeaders, [Map<String, Object> data]
+    Uri endpointUri, Map<String, String> httpHeaders,
+    [covariant Map<String, Object> data]
   ) async {
     httpHeaders[HttpHeaders.contentTypeHeader] = 'application/x-www-form-urlencoded';
 
