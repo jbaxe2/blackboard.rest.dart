@@ -1,5 +1,8 @@
 **blackboard.rest**
 
+## 0.1.6
+- Added terms DTO's, interface, implementation, and tests.
+
 ## 0.1.5+3
 - Resolved an issue with obtaining the user via externalId.
 

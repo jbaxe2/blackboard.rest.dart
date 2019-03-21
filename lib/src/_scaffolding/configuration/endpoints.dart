@@ -56,6 +56,12 @@ const Map<String, String> system = {
   'get_version': 'system/version'
 };
 
+/// The terms endpoints...
+const Map<String, String> terms = {
+  'terms': 'terms',
+  'term': 'terms/{termId}'
+};
+
 /// The users endpoints
 const Map<String, String> users = {
   'users': 'users',

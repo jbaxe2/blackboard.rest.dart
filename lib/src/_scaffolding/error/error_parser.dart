@@ -4,18 +4,23 @@ import 'rest_exception.dart';
 
 /// The [ErrorParser] abstract class...
 abstract class ErrorParser {
-  /// The [parseError] method...
-  BlackboardRestException parseError (Object rawError) {
-    if (!((rawError is! Map) &&
-          (rawError as Map).containsKey ('message'))) {
+  /// The [parsePotentialError] method...
+  BlackboardRestException parsePotentialError (covariant Object rawError) {
+    Map errorMap;
+
+    try {
+      errorMap = rawError as Map;
+    } catch (_) {
       return null;
     }
 
-    Map<String, Object> mapError = (rawError as Map).cast();
+    if (!(errorMap.containsKey ('message') && errorMap.containsKey ('status'))) {
+      return null;
+    }
 
     try {
       return new BlackboardRestException (
-        mapError['message'], status: mapError['status']
+        errorMap['message'], status: errorMap['status']
       );
     } catch (e) {
       throw new BlackboardRestException (

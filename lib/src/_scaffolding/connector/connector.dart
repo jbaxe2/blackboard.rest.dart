@@ -81,7 +81,7 @@ class _BlackboardRestConnector extends ErrorParser implements BlackboardRestConn
     Object decodedResponse = json.decode (response?.body);
     BlackboardRestException exception;
 
-    if (null != (exception = parseError (decodedResponse))) {
+    if (null != (exception = parsePotentialError (decodedResponse))) {
       throw exception;
     }
 

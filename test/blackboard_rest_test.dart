@@ -8,6 +8,7 @@ import 'course_memberships/course_memberships_test.dart';
 import 'courses/courses_test.dart';
 import 'oauth2/oauth2_test.dart';
 import 'system/system_test.dart';
+import 'terms/terms_test.dart';
 import 'users/users_test.dart';
 
 import 'testable.dart';
@@ -25,6 +26,7 @@ class _BbRestTester implements Testable {
   void run() {
     (new OAuth2Tester()).run();
     (new SystemTester()).run();
+    (new TermsTester()).run();
     (new CoursesTester()).run();
     (new UsersTester()).run();
     (new CourseMembershipsTester()).run();
