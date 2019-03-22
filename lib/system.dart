@@ -7,6 +7,8 @@ import 'src/oauth2/access_token.dart';
 import 'src/system/bb_rest_system.dart';
 import 'src/system/version_info.dart';
 
+export 'src/system/version_info.dart';
+
 /// The [getSystemInstance] method...
 System getSystemInstance (String host, AccessToken token) =>
   new BbRestSystem (host, token);

@@ -7,6 +7,8 @@ import 'src/oauth2/access_token.dart';
 import 'src/users/bb_rest_users.dart';
 import 'src/users/user.dart';
 
+export 'src/users/user.dart';
+
 /// The [getUsersInstance] function...
 Users getUsersInstance (String host, AccessToken token) =>
   new BbRestUsers (host, token);

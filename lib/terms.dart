@@ -7,6 +7,8 @@ import 'src/oauth2/access_token.dart';
 import 'src/terms/bb_rest_terms.dart';
 import 'src/terms/term.dart';
 
+export 'src/terms/term.dart';
+
 /// The [getTermsInstance] function...
 Terms getTermsInstance (String host, AccessToken token) =>
   new BbRestTerms (host, token);

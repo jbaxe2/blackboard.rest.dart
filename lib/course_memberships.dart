@@ -7,6 +7,8 @@ import 'src/course_memberships/membership.dart';
 
 import 'src/oauth2/access_token.dart';
 
+export 'src/course_memberships/membership.dart';
+
 /// The [getCourseMembershipsInstance] function...
 CourseMemberships getCourseMembershipsInstance (String host, AccessToken token) =>
   new BbRestCourseMemberships (host, token);
