@@ -42,6 +42,7 @@ class UserFactory implements BlackboardRestDtoFactory {
   User _parseUser (covariant Map<String, Object> rawUser) {
     return new User (
       rawUser['id'], rawUser['uuid'], rawUser['externalId'], rawUser['userName'],
+      (rawUser['contact'] as Map)['email'],
       DateTime.parse (rawUser['created']), DateTime.parse (rawUser['lastLogin']),
       _parseName (rawUser['name'])
     );

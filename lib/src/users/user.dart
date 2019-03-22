@@ -18,6 +18,8 @@ class User implements Mappable {
 
   final String userName;
 
+  final String email;
+
   final String studentId;
 
   final DateTime created;
@@ -34,8 +36,8 @@ class User implements Mappable {
 
   /// The [User] constructor...
   User (
-    this.id, this.uuid, this.externalId, this.userName, this.created,
-    this.lastLogin, this.name,
+    this.id, this.uuid, this.externalId, this.userName, this.email,
+    this.created, this.lastLogin, this.name,
     {this.dataSourceId, this.studentId, this.systemRoleIds,
      this.institutionRoleIds, this.availability}
   );
