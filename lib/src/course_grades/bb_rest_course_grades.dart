@@ -47,6 +47,7 @@ class BbRestCourseGrades extends BlackboardRestServices implements CourseGrades 
   Future<void> createGradeColumn (String courseId, GradeColumn gradeColumn) async {}
 
   /// The [getGradeColumn] method...
+  @override
   Future<GradeColumn> getGradeColumn (String courseId, String columnId) async {
     String endpoint = course_grades['get_grade_column']
       .replaceFirst ('{courseId}', courseId)
