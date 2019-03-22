@@ -2,7 +2,7 @@ library blackboard.rest.exception;
 
 /// The [BlackboardRestException] class...
 class BlackboardRestException implements Exception {
-  final String status;
+  final int status;
 
   final String code;
 

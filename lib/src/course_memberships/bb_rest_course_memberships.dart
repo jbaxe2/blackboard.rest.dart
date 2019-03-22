@@ -30,7 +30,7 @@ class BbRestCourseMemberships
     try {
       rawMemberships = (await connector.sendBbRestRequest (endpoint) as Map)['results'];
     } catch (e) {
-      throw e as InvalidMembership;
+      throw throwError (e);
     }
 
     return (new CourseMembershipFactory()).createAll (rawMemberships.cast());
@@ -47,7 +47,7 @@ class BbRestCourseMemberships
     try {
       rawMemberships = (await connector.sendBbRestRequest (endpoint) as Map)['results'];
     } catch (e) {
-      throw e as InvalidMembership;
+      throw throwError (e);
     }
 
     return (new CourseMembershipFactory()).createAll (rawMemberships.cast());
@@ -65,7 +65,7 @@ class BbRestCourseMemberships
     try {
       rawMembership = await connector.sendBbRestRequest (endpoint);
     } catch (e) {
-      throw e as InvalidMembership;
+      throw throwError (e);
     }
 
     return (new CourseMembershipFactory()).create (rawMembership);
@@ -82,4 +82,13 @@ class BbRestCourseMemberships
   Future<void> createMembership (
     String courseId, String userId, Membership membership
   ) async {}
+
+  /// The [throwError] method...
+  @override
+  InvalidMembership throwError (covariant BlackboardRestException error) {
+    return new InvalidMembership (
+      error.message, status: error?.status, code: error?.code,
+      developerMessage: error?.developerMessage, extraInfo: error?.extraInfo
+    );
+  }
 }

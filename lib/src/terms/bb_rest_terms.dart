@@ -27,7 +27,7 @@ class BbRestTerms extends BlackboardRestServices implements Terms {
       rawTerms =
         (await connector.sendBbRestRequest (terms['terms']) as Map)['results'];
     } catch (e) {
-      throw e as InvalidTerm;
+      throw throwError (e);
     }
 
     return (new TermFactory()).createAll (rawTerms.cast());
@@ -40,13 +40,13 @@ class BbRestTerms extends BlackboardRestServices implements Terms {
   /// The [getTerm] method...
   @override
   Future<Term> getTerm (String termId) async {
-    String endpoint = terms['term'].replaceFirst('termId', termId);
+    String endpoint = terms['term'].replaceFirst('{termId}', termId);
     Object rawTerm;
 
     try {
       rawTerm = await connector.sendBbRestRequest (endpoint);
     } catch (e) {
-      throw e as InvalidTerm;
+      throw throwError (e);
     }
 
     return (new TermFactory()).create (rawTerm);
@@ -55,4 +55,13 @@ class BbRestTerms extends BlackboardRestServices implements Terms {
   /// The [updateTerm] method...
   @override
   Future<void> updateTerm (String termId, Term term) async {}
+
+  /// The [throwError] method...
+  @override
+  InvalidTerm throwError (covariant BlackboardRestException error) {
+    return new InvalidTerm (
+      error.message, status: error?.status, code: error?.code,
+      developerMessage: error?.developerMessage, extraInfo: error?.extraInfo
+    );
+  }
 }

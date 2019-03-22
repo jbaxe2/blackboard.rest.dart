@@ -1,5 +1,9 @@
 **blackboard.rest**
 
+## 0.1.6+1
+- Refactored the error handlers for service implementations to better return
+the appropriate exception type.
+
 ## 0.1.6
 - Added terms DTO's, interface, implementation, and tests.
 

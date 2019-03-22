@@ -28,7 +28,7 @@ class BbRestUsers extends BlackboardRestServices implements Users {
     try {
       rawUsers = (await connector.sendBbRestRequest (endpoint) as Map)['results'];
     } catch (e) {
-      throw e as ImproperUser;
+      throw throwError (e);
     }
 
     return (new UserFactory()).createAll (rawUsers.cast());
@@ -48,7 +48,7 @@ class BbRestUsers extends BlackboardRestServices implements Users {
     try {
       rawUser = await connector.sendBbRestRequest (endpoint);
     } catch (e) {
-      throw e as ImproperUser;
+      throw throwError (e);
     }
 
     return (new UserFactory()).create (rawUser);
@@ -57,4 +57,13 @@ class BbRestUsers extends BlackboardRestServices implements Users {
   /// The [updateUser] method...
   @override
   Future<void> updateUser (String userId, User user) async {}
+
+  /// The [throwError] method...
+  @override
+  ImproperUser throwError (covariant BlackboardRestException error) {
+    return new ImproperUser (
+      error.message, status: error?.status, code: error?.code,
+      developerMessage: error?.developerMessage, extraInfo: error?.extraInfo
+    );
+  }
 }

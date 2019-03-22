@@ -36,7 +36,7 @@ class BbRestCourseGrades extends BlackboardRestServices implements CourseGrades 
       rawGrades =
         (await connector.sendBbRestRequest (endpoint, useVersion: 2) as Map)['results'];
     } catch (e) {
-      throw e as InvalidGrade;
+      throw throwError (e);
     }
 
     return (new GradeColumnFactory()).createAll (rawGrades.cast());
@@ -57,7 +57,7 @@ class BbRestCourseGrades extends BlackboardRestServices implements CourseGrades 
     try {
       rawGrade = await connector.sendBbRestRequest (endpoint, useVersion: 2);
     } catch (e) {
-      throw e as InvalidGrade;
+      throw throwError (e);
     }
 
     return (new GradeColumnFactory()).create (rawGrade);
@@ -84,7 +84,7 @@ class BbRestCourseGrades extends BlackboardRestServices implements CourseGrades 
       rawGrades =
         (await connector.sendBbRestRequest (endpoint, useVersion: 2) as Map)['results'];
     } catch (e) {
-      throw e as InvalidGrade;
+      throw throwError (e);
     }
 
     return (new ColumnAttemptFactory()).createAll (rawGrades.cast());
@@ -109,7 +109,7 @@ class BbRestCourseGrades extends BlackboardRestServices implements CourseGrades 
     try {
       rawGrade = await connector.sendBbRestRequest (endpoint, useVersion: 2);
     } catch (e) {
-      throw e as InvalidGrade;
+      throw throwError (e);
     }
 
     return (new ColumnAttemptFactory()).create (rawGrade);
@@ -142,4 +142,13 @@ class BbRestCourseGrades extends BlackboardRestServices implements CourseGrades 
   /// The [getUserGrades] method...
   @override
   Future<Iterable<Grade>> getUserGrades (String courseId, String userId) async {}
+
+  /// The [throwError] method...
+  @override
+  InvalidGrade throwError (covariant BlackboardRestException error) {
+    return new InvalidGrade (
+      error.message, status: error?.status, code: error?.code,
+      developerMessage: error?.developerMessage, extraInfo: error?.extraInfo
+    );
+  }
 }

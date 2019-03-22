@@ -26,9 +26,18 @@ class BbRestSystem extends BlackboardRestServices implements System {
     try {
       rawVersion = await connector.sendBbRestRequest (system['get_version']);
     } catch (e) {
-      throw e as InvalidVersion;
+      throw throwError (e);
     }
 
     return (new SystemFactory()).create (rawVersion);
+  }
+
+  /// The [throwError] method...
+  @override
+  InvalidVersion throwError (covariant BlackboardRestException error) {
+    return new InvalidVersion (
+      error.message, status: error?.status, code: error?.code,
+      developerMessage: error?.developerMessage, extraInfo: error?.extraInfo
+    );
   }
 }

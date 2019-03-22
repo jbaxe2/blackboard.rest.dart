@@ -37,7 +37,7 @@ class BbRestCourses extends BlackboardRestServices implements Courses {
     try {
       rawCourse = await connector.sendBbRestRequest (endpoint);
     } catch (e) {
-      throw e as InvalidCourse;
+      throw throwError (e);
     }
 
     return (new CourseFactory()).create ((rawCourse as Map).cast());
@@ -72,4 +72,13 @@ class BbRestCourses extends BlackboardRestServices implements Courses {
   /// The [getTask] abstract method...
   @override
   Future<CourseTask> getTask (String courseId, String taskId) async {}
+
+  /// The [throwError] method...
+  @override
+  InvalidCourse throwError (covariant BlackboardRestException error) {
+    return new InvalidCourse (
+      error.message, status: error?.status, code: error?.code,
+      developerMessage: error?.developerMessage, extraInfo: error?.extraInfo
+    );
+  }
 }

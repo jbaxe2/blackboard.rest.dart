@@ -7,7 +7,7 @@ class InvalidTerm extends BlackboardRestException {
   /// The [InvalidTerm] constructor...
   InvalidTerm (
     String message,
-    {String status, String code, String developerMessage, String extraInfo}
+    {int status, String code, String developerMessage, String extraInfo}
   ) : super (
     message, status: status, code: code,
     developerMessage: developerMessage, extraInfo: extraInfo

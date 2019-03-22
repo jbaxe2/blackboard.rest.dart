@@ -5,8 +5,6 @@ import 'package:test/test.dart';
 
 import 'package:blackboard.rest/terms.dart';
 
-import 'package:blackboard.rest/src/_scaffolding/error/invalid_term.dart';
-
 import 'package:blackboard.rest/src/terms/bb_rest_terms.dart';
 import 'package:blackboard.rest/src/terms/term.dart';
 
@@ -68,7 +66,6 @@ class TermsTester extends TestAuthorizer implements Testable {
       try {
         term = await termsService.getTerm ('_380_1');
       } catch (e) {
-        print (e.toString());
         error = e;
       }
 
