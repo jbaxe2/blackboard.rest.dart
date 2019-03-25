@@ -35,8 +35,11 @@ class _RestUserAuthorizer extends _RestAuthorizer implements RestUserAuthorizer 
   Future<AccessToken> requestUserAuthorization (
     String authCode, String redirectUri
   ) async {
+    String encodedRedirect =
+      (null == redirectUri) ? '' : '&redirect_uri=${Uri.encodeFull (redirectUri)}';
+
     String authCodeUriStr = '$host$base${oauth2['request_token']}'
-      '&code=$authCode&redirect_uri=${Uri.encodeFull (redirectUri)}';
+      '?code=$authCode$encodedRedirect';
 
     String encodedAuth = (new Base64Encoder()).convert (
       '$clientId:$secret'.codeUnits
