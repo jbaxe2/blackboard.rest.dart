@@ -30,6 +30,7 @@ class CourseMembershipFactory implements BlackboardRestDtoFactory {
   /// The [create] method...
   @override
   Membership create (covariant Map<String, Object> rawMembership) {
+    rawMembership.forEach((k,v) => print ('$k: $v'));
     if (!(rawMembership.containsKey ('userId') &&
           rawMembership.containsKey ('courseId') &&
           rawMembership.containsKey ('created') &&
