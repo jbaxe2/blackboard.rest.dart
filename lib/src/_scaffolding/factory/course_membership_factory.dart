@@ -35,7 +35,6 @@ class CourseMembershipFactory implements BlackboardRestDtoFactory {
           rawMembership.containsKey ('created') &&
           rawMembership.containsKey ('availability') &&
           rawMembership.containsKey ('courseRoleId'))) {
-      rawMembership.forEach((k,v) => print ('$k: ${v.toString()}'));
       throw new InvalidMembership (
         'Missing required information for the course membership.'
       );
@@ -50,8 +49,7 @@ class CourseMembershipFactory implements BlackboardRestDtoFactory {
       rawMembership['userId'], rawMembership['courseId'],
       DateTime.parse (rawMembership['created']),
       _parseMembershipAvailability ((rawMembership['availability'] as Map).cast()),
-      _parseMembershipRole (rawMembership['courseRoleId']),
-      DateTime.parse (rawMembership['lastAccessed'])
+      _parseMembershipRole (rawMembership['courseRoleId'])
     );
   }
 

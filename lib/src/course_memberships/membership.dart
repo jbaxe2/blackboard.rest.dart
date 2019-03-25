@@ -26,7 +26,8 @@ class Membership {
   /// The [Membership] constructor...
   Membership (
     this.userId, this.courseId, this.created, this.availability,
-    this.courseRoleId, this.lastAccessed,
-    {this.childCourseId, this.dataSourceId, this.bypassCourseAvailabilityUntil}
+    this.courseRoleId,
+    {this.childCourseId, this.dataSourceId, this.bypassCourseAvailabilityUntil,
+     this.lastAccessed}
   );
 }
