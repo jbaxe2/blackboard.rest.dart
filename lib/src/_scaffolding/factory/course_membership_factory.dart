@@ -34,8 +34,7 @@ class CourseMembershipFactory implements BlackboardRestDtoFactory {
           rawMembership.containsKey ('courseId') &&
           rawMembership.containsKey ('created') &&
           rawMembership.containsKey ('availability') &&
-          rawMembership.containsKey ('courseRoleId') &&
-          rawMembership.containsKey ('lastAccessed'))) {
+          rawMembership.containsKey ('courseRoleId'))) {
       rawMembership.forEach((k,v) => print ('$k: $v'));
       throw new InvalidMembership (
         'Missing required information for the course membership.'
