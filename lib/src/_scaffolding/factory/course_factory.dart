@@ -25,6 +25,7 @@ class CourseFactory implements BlackboardRestDtoFactory {
   /// The [create] method...
   @override
   Course create (covariant Map<String, Object> rawCourse) {
+    print ('here for create course');
     if (!(rawCourse.containsKey ('id') &&
           rawCourse.containsKey ('uuid') &&
           rawCourse.containsKey ('courseId') &&
@@ -34,6 +35,7 @@ class CourseFactory implements BlackboardRestDtoFactory {
           rawCourse.containsKey ('organization') &&
           rawCourse.containsKey ('externalAccessUrl') &&
           rawCourse.containsKey ('guestAccessUrl'))) {
+      print ('missing some required info for ${rawCourse['courseId']}');
       rawCourse.forEach ((k,v) => print ('$k: $v'));
       throw new InvalidCourse ('Missing required information for the course.');
     }
