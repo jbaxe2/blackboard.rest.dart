@@ -33,10 +33,7 @@ class CourseFactory implements BlackboardRestDtoFactory {
           rawCourse.containsKey ('name') &&
           rawCourse.containsKey ('created') &&
           rawCourse.containsKey ('organization') &&
-          rawCourse.containsKey ('externalAccessUrl') &&
-          rawCourse.containsKey ('guestAccessUrl'))) {
-      print ('missing some required info for ${rawCourse['courseId']}');
-      rawCourse.forEach ((k,v) => print ('$k: $v'));
+          rawCourse.containsKey ('externalAccessUrl'))) {
       throw new InvalidCourse ('Missing required information for the course.');
     }
 
@@ -49,7 +46,7 @@ class CourseFactory implements BlackboardRestDtoFactory {
       rawCourse['id'], rawCourse['uuid'], rawCourse['courseId'],
       rawCourse['externalId'], rawCourse['name'],
       DateTime.parse (rawCourse['created']), rawCourse['organization'],
-      rawCourse['externalAccessUrl'], rawCourse['guestAccessUrl']
+      rawCourse['externalAccessUrl']
     );
   }
 

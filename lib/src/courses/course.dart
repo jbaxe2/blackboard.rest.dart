@@ -50,9 +50,10 @@ class Course {
   /// The [Course] constructor...
   Course (
     this.id, this.uuid, this.courseId, this.externalId, this.name, this.created,
-    this.organization, this.externalAccessUrl, this.guestAccessUrl,
+    this.organization, this.externalAccessUrl,
     {this.dataSourceId, this.description, this.ultraStatus,
      this.allowGuests, this.readOnly, this.termId, this.availability,
-     this.enrollment, this.locale, this.hasChildren, this.parentId}
+     this.enrollment, this.locale, this.hasChildren, this.parentId,
+     this.guestAccessUrl}
   );
 }

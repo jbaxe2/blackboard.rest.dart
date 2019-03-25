@@ -19,10 +19,10 @@ class CoursesTester extends TestAuthorizer implements Testable {
   @override
   void run() {
     group ('Courses:', () {
-      //_testGetValidCoursesInstance();
+      _testGetValidCoursesInstance();
       _testGetCourseByPrimaryId();
-      //_testGetCourseByCourseId();
-      //_testGetCourseByExternalId();
+      _testGetCourseByCourseId();
+      _testGetCourseByExternalId();
     });
   }
 
@@ -45,7 +45,7 @@ class CoursesTester extends TestAuthorizer implements Testable {
       Course course;
 
       try {
-        course = await bbRestCourses.getCourse ('_121_1');
+        course = await bbRestCourses.getCourse ('_101_1');
       } catch (e) {
         error = e;
       }
@@ -53,7 +53,7 @@ class CoursesTester extends TestAuthorizer implements Testable {
       assert (null == error);
       assert (null != course);
 
-      expect (('_121_1' == course.id), true);
+      expect (('_101_1' == course.id), true);
     });
   }
 
