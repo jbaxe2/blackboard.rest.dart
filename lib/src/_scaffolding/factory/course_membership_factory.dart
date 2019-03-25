@@ -30,13 +30,13 @@ class CourseMembershipFactory implements BlackboardRestDtoFactory {
   /// The [create] method...
   @override
   Membership create (covariant Map<String, Object> rawMembership) {
-    rawMembership.forEach((k,v) => print ('$k: $v'));
     if (!(rawMembership.containsKey ('userId') &&
           rawMembership.containsKey ('courseId') &&
           rawMembership.containsKey ('created') &&
           rawMembership.containsKey ('availability') &&
           rawMembership.containsKey ('courseRoleId') &&
           rawMembership.containsKey ('lastAccessed'))) {
+      rawMembership.forEach((k,v) => print ('$k: $v'));
       throw new InvalidMembership (
         'Missing required information for the course membership.'
       );
