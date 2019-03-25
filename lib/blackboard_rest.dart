@@ -11,5 +11,6 @@ export 'courses.dart';
 export 'oauth2.dart';
 export 'roles.dart';
 export 'system.dart';
+export 'terms.dart';
 export 'uploads.dart';
 export 'users.dart';
