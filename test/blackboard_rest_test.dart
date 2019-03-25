@@ -24,12 +24,12 @@ class _BbRestTester implements Testable {
   /// The [run] method...
   @override
   void run() {
-    (new OAuth2Tester()).run();
-    (new SystemTester()).run();
-    (new TermsTester()).run();
+    //(new OAuth2Tester()).run();
+    //(new SystemTester()).run();
+    //(new TermsTester()).run();
     (new CoursesTester()).run();
-    (new UsersTester()).run();
-    (new CourseMembershipsTester()).run();
-    (new CourseGradesTester()).run();
+    //(new UsersTester()).run();
+    //(new CourseMembershipsTester()).run();
+    //(new CourseGradesTester()).run();
   }
 }

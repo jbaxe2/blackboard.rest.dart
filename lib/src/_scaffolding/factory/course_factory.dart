@@ -34,6 +34,7 @@ class CourseFactory implements BlackboardRestDtoFactory {
           rawCourse.containsKey ('organization') &&
           rawCourse.containsKey ('externalAccessUrl') &&
           rawCourse.containsKey ('guestAccessUrl'))) {
+      rawCourse.forEach ((k,v) => print ('$k: $v'));
       throw new InvalidCourse ('Missing required information for the course.');
     }
 

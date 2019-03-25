@@ -19,10 +19,10 @@ class CoursesTester extends TestAuthorizer implements Testable {
   @override
   void run() {
     group ('Courses:', () {
-      _testGetValidCoursesInstance();
+      //_testGetValidCoursesInstance();
       _testGetCourseByPrimaryId();
-      _testGetCourseByCourseId();
-      _testGetCourseByExternalId();
+      //_testGetCourseByCourseId();
+      //_testGetCourseByExternalId();
     });
   }
 
