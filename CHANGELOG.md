@@ -1,5 +1,9 @@
 **blackboard.rest**
 
+## 0.1.6+2
+- Added some exports for parts of the library for better access by users of the
+library.
+
 ## 0.1.6+1
 - Refactored the error handlers for service implementations to better return
 the appropriate exception type.
