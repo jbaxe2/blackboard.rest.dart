@@ -25,7 +25,6 @@ class CourseFactory implements BlackboardRestDtoFactory {
   /// The [create] method...
   @override
   Course create (covariant Map<String, Object> rawCourse) {
-    print ('here for create course');
     if (!(rawCourse.containsKey ('id') &&
           rawCourse.containsKey ('uuid') &&
           rawCourse.containsKey ('courseId') &&
