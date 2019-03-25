@@ -3,6 +3,8 @@
 ## 0.1.6+3
 - Resolved an OAuth2 error for user authorization.
 - Resolved a course factory issue for courses that do not allow guest access.
+- Resolved a course membership factory issue for memberships that do not include
+a last access date.
 
 ## 0.1.6+2
 - Added some exports for parts of the library for better access by users of the
